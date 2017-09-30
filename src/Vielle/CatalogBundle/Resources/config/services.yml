@@ -1,0 +1,4 @@
+services:
+#    vielle_catalog.example:
+#        class: Vielle\CatalogBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

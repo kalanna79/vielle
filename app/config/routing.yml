@@ -1,0 +1,7 @@
+vielle_catalog:
+    resource: "@VielleCatalogBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
