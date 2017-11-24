@@ -6,7 +6,9 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: fr
+    products_directory: '%kernel.project_dir%/web/assets/images/products'
+
 
 framework:
     #esi: ~
@@ -42,12 +44,14 @@ twig:
 doctrine:
     dbal:
         driver: pdo_mysql
+        server_version: 5.6
         host: '%database_host%'
         port: '%database_port%'
         dbname: '%database_name%'
         user: '%database_user%'
         password: '%database_password%'
         charset: UTF8
+        #unix_socket: /tmp/mysql.sock
         # if using pdo_sqlite as your database driver:
         #   1. add the path in parameters.yml
         #     e.g. database_path: '%kernel.project_dir%/var/data/data.sqlite'
@@ -63,7 +67,18 @@ doctrine:
 # Swiftmailer Configuration
 swiftmailer:
     transport: '%mailer_transport%'
+    encryption: '%mailer_encryption%'
+    auth_mode:  '%mailer_auth_mode%'
     host: '%mailer_host%'
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+
+gregwar_captcha:
+    reload: true
+    as_url: true
+    keep_value: true
+
+
+

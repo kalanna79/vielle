@@ -1,0 +1,63 @@
+{% extends "base.html.twig" %}
+{% block menu %}{% include("menu2.html.twig") %}{% endblock %}
+{% block body %}
+<div class="men">
+    <div class="container">
+    <div class="contact_form">
+        <h2>Ajouter une vielle</h2>
+        {{ form_start(form) }}
+        <div class="col-md-6 to">
+                {{ form_widget(form.subcategory, {'attr':{'placeholder': 'Sous-catégorie'} }) }}
+                {{ form_widget(form.name, {'attr':{'placeholder': 'Nom'} }) }}
+            </div>
+            <div class="col-md-6 text">
+                {{ form_widget(form.description, {'attr':{'placeholder': 'Description'} }) }}
+                
+            </div>
+        <div class="col-md-6 to">
+        
+            {{ form_widget(form.photo, {'attr':{'placeholder': 'Télécharger la photo'}}) }}
+            {{ form_widget(form.metatag, {'attr':{'placeholder': 'Mots-clés'}}) }}
+        </div>
+        
+                <div class="but__center">
+                {{ form_widget(form.ajouter) }}
+                    {{ form_rest(form) }}
+
+                </div>
+    </div>
+        <div class="clearfix"></div>
+    
+        <div class="grid_1">
+            <h1>Les luthiers de Jenzat</h1>
+            <p>Jenzat est un petit village situé aux frontières de l’Auvergne et du Bourbonnais, à environ 50 kilomètres au nord de Clermont-Ferrand, devenu le centre de la fabrication de vielles il y a plus de deux siècles. <br>Plus de 20 artisans s'y sont succédé, chacun travaillant à faire évoluer les techniques de contruction jusqu’à obtenir des instruments de qualité exceptionnelle. <br>Beaucoup se souviennent de la lignée des Pajot, de Pimpart et Angioux, Nigoux, Tixier, Decante et Caille. <br>La technique et la qualité se perpétuent encore aujourd’hui avec Claude-Emmanuel et Jean-Claude Boudet. </p>
+        </div>
+        <div class="grid_4">
+            <div class="grid_2 preffix_1">
+                <ul class="iphone">
+                    <i class="phone"> </i>
+                    <li class="phone_desc">+33 4 70 56 84 01 </li>
+                    <div class="clearfix"> </div>
+                </ul>
+                <ul class="iphone">
+                    <i class="flag"> </i>
+                    <li class="phone_desc"><a href="http://vielle-boudet.com">http://vielle-boudet.com</a></li>
+                    <div class="clearfix"> </div>
+                </ul>
+            </div>
+            <div class="grid_3">
+                <ul class="iphone">
+                    <i class="msg"> </i>
+                    <li class="phone_desc"><a href="mailto:mail@demolink.org">mail(at)watches.com</a> </li>
+                    <div class="clearfix"> </div>
+                </ul>
+                <ul class="iphone">
+                    <i class="home"> </i>
+                    <li class="phone_desc">3 rue des Claudis - 03800 JENZAT </li>
+                    <div class="clearfix"> </div>
+                </ul>
+            </div>
+    </div>
+</div>
+
+{% endblock %}

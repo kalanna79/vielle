@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+{% block menu %}{% include("menu2.html.twig") %}{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="grid_1">
+            <h1>La restauration de votre instrument</h1>
+            <div class="col-md-6 to">
+        
+                <p>
+            
+                    Dignes successeurs de la lignée Pajot, <strong>Jean-Claude Boudet</strong>, <em>"Meilleur Ouvrier
+                                                                                                    de France"</em>, et
+                    <strong>Claude-Emmanuel Boudet</strong>, diplômé à Mirecourt, restaurent toute vielle ancienne dans le respect de la lutherie et des luthiers d'autrefois.<br><br>
+            
+                   <h4> Vous avez un instrument rare ou un lien affectif avec un instrument, confiez-le nous :
+                             nous lui
+                    offrirons une seconde jeunesse.</h4>
+                </p>
+            </div>
+            <div class="col-md-6 to">
+                <img src="{{ asset('assets/images/vielle-restauration.jpg') }}" width="100%" alt="Restauration de
+                vielles par Jean-Claude Boudet" />
+            </div>
+            
+        </div>
+    </div>
+    
+{% endblock %}

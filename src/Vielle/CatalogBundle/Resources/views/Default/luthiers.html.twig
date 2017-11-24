@@ -1,0 +1,54 @@
+{% extends "base.html.twig" %}
+{% block menu %}{% include("menu2.html.twig") %}{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="grid_1">
+            <h1>Les vielles à roues : une histoire de famille</h1>
+            <div class="grid_1">
+    
+                <div class="col-md-6 to">
+                    <h2>Jean-Claude Boudet</h2>
+                    <p>
+                        Issue du sud de l’Allier, la famille Boudet, depuis la fin du 19e siècle, a généré cinq artisans
+                        menuisiers ou ébénistes.<br>
+                        Je me suis établi en 1963 et me suis rapidement spécialisé dans la lutherie traditionnelle. En 1990, je pris la succession des anciennes maisons Pajot (fondées en 1795).
+                        <br><br>
+                        L’antériorité de notre maison est la confirmation de notre sérieux.
+                    </p>
+                </div>
+        
+                <div class="col-md-6 to">
+                    <img src="{{ asset('assets/images/jean-claude-boudet.png') }}" alt="Jean-Claude Boudet,
+                    luthier et facteur de vielles
+    " style="margin-bottom: 1em;"/>
+                </div>
+            </div>
+            <div class="grid_1">
+    
+                <div class="col-md-6 to">
+                    <h2>Claude-Emmanuel Boudet</h2>
+                    <p>
+                        Mon fils Claude-Emmanuel prend sa place à mes côtés en 1997, assurant ainsi la tradition.<br>
+                        Maintenant indépendant, il gère lui-même sa production au sein de sa propre entreprise artisanale.
+                    </p>
+                </div>
+        
+    
+                <div class="col-md-6 to">
+                    <img src="{{ asset('assets/images/claude-boudet.png') }}" alt="Claude-Emmanuel Boudet"
+                         style="margin-bottom: 1em;"/>
+                </div>
+            </div>
+        <div class="grid1">
+        <div class="col-md-12" style="margin-top: 1em;">
+            <h2>Chaque instrument fabriqué est personnalisé.</h2>
+            Il est le fruit d’une attention particulière, d’un choix des matériaux les meilleurs, au service de votre
+            musicalité.<br><br>
+                <img src="{{ asset('assets/images/claude-vielle.jpg') }}" width="100%" alt="Restauration de
+                vielles par Jean-Claude Boudet" />
+            </div>
+            
+        </div>
+    </div>
+    
+{% endblock %}

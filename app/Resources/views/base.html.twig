@@ -1,13 +1,77 @@
-<!DOCTYPE html>
+<!--A Design inspired by W3layouts
+Modified by Natacha NOEL
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
 <html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<head>
+    <title>{% block title %}Boudet Luthiers Père et Fils - Vielles à roue{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Vielle à roue, Boudet, Occitan, musique médiévale, Hurdy burgy" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link href="{{ asset('assets/css/bootstrap.css') }}" rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- Custom Theme files -->
+    <link href="{{ asset('assets/css/style.css') }}" rel='stylesheet' type='text/css' />
+    <link href="{{ asset('assets/css/component.css') }}" rel='stylesheet' type='text/css' />
+
+    <!-- Custom Theme files -->
+    <!--webfont-->
+    <link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Dorsa' rel='stylesheet' type='text/css'>
+    <link href="{{ asset('assets/css/megamenu.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <script type="text/javascript" src="{{ asset('assets/js/jquery-1.11.1.min.js') }}"></script>
+   
+    <script src="{{ asset('assets/js/jquery.easydropdown.js') }}"></script>
+    
+    <link href="{{ asset('assets/css/megamenu.css') }}" rel="stylesheet" type="text/css" media="all" />
+    
+    <!-- start menu -->
+
+</head>
+<body>
+        {% block menu %} {% endblock %}
+    {%  for flashMsg in app.session.FlashBag.get('success') %}
+        <div class="more alert alert-success alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+            
+                <div class="alert-success">
+                    {{ flashMsg }}
+                
+            </div>
+        </div>
+    {% endfor %}
+    
+    {%  for flashMsg in app.session.FlashBag.get('error') %}
+        <div class="more alert alert-danger alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+            
+            <div class="alert-danger">
+                {{ flashMsg }}
+            
+            </div>
+        </div>
+    {% endfor %}
+    
+    {% block body %} {% endblock %}
+    <div class="footer">
+            <div class="copy">
+                <p> &copy; 2017 Boudet Luthiers. Tous droits réservés | <a href="#">Mentions Légales</a></p>
+        </div>
+    </div>
+    {% block javascripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script src="{{ asset("assets/js/personal.js") }}"></script>
+        <script src="{{ asset('assets/js/megamenu.js') }}"></script>
+        <script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
+    {% endblock %}
+
+</body>
 </html>
+

@@ -1,3 +1,52 @@
-vielle_catalog_homepage:
-    path:     /
+index:
+    path:     /index
     defaults: { _controller: VielleCatalogBundle:Default:index }
+
+vielles:
+    path:      /vielles
+    defaults: { _controller: VielleCatalogBundle:Vielles:catalog }
+
+
+singlevielle:
+    path:      /catalog/{id}
+    defaults:
+        _controller: VielleCatalogBundle:Vielles:view
+    requirements:
+        id: \d+
+
+
+vielle_catalog_add:
+    path:      /add
+    defaults:
+        _controller: VielleCatalogBundle:AdminAddProduct:addproduct
+
+
+vielle_catalog_edit:
+    path:      /edit/{id}
+    defaults:
+        _controller: VielleCatalogBundle:Fiche:edit
+    requirements:
+        id: \d+
+
+
+vielle_catalog_delete:
+    path:      /delete/{id}
+    defaults:
+        _controller: VielleCatalogBundle:Fiche:delete
+    requirements:
+        id: \d+
+
+contact:
+    path:   /contact
+    defaults:
+        { _controller: VielleCatalogBundle:Contact:contact }
+
+restauration:
+    path:   /restauration
+    defaults:
+        { _controller : VielleCatalogBundle:Restauration:restauration }
+
+luthiers:
+    path:   /luthiers
+    defaults:
+        { _controller: VielleCatalogBundle:Luthiers:luthiers }
