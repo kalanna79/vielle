@@ -18,9 +18,10 @@
 	
 	class AdminAddProductController extends Controller
 	{
-		public function addproductAction(Request $request, Uploader $uploader)
+		public function addproductAction(Request $request)
 		{
 			$product = new Product();
+			$uploader = new Uploader('assets/images/products');
 			$form = $this->createForm(ProductType::class, $product);
 			
 			if ($request->isMethod('POST'))

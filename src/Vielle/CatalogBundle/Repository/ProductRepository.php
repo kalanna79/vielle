@@ -11,7 +11,6 @@ namespace Vielle\CatalogBundle\Repository;
 class ProductRepository extends \Doctrine\ORM\EntityRepository
 {
 	/**
-	 * @param        $vielles
 	 * @return array
 	 */
 	public function findVielles()

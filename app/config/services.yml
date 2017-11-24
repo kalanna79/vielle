@@ -34,8 +34,3 @@ services:
     #     arguments:
     #         $someArgument: 'some_value'
 
-    Vielle\CatalogBundle\Uploader\:
-            class: Vielle\CatalogBundle\Services\Uploader
-            arguments:
-                $targetDir: "%products_directory%"
-            public: true
