@@ -50,3 +50,8 @@ luthiers:
     path:   /luthiers
     defaults:
         { _controller: VielleCatalogBundle:Luthiers:luthiers }
+
+mentions:
+    path:   /mentions
+    defaults:
+        { _controller: VielleCatalogBundle:Mentions:mentions }

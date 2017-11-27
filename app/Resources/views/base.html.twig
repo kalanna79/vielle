@@ -19,6 +19,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!-- Custom Theme files -->
     <link href="{{ asset('assets/css/style.css') }}" rel='stylesheet' type='text/css' />
     <link href="{{ asset('assets/css/component.css') }}" rel='stylesheet' type='text/css' />
+    <link href="{{ asset('assets/css/flexslider.css') }}" rel='stylesheet' type='text/css' />
+
 
     <!-- Custom Theme files -->
     <!--webfont-->
@@ -28,6 +30,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <script type="text/javascript" src="{{ asset('assets/js/jquery-1.11.1.min.js') }}"></script>
    
     <script src="{{ asset('assets/js/jquery.easydropdown.js') }}"></script>
+    
     
     <link href="{{ asset('assets/css/megamenu.css') }}" rel="stylesheet" type="text/css" media="all" />
     
@@ -61,7 +64,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     {% block body %} {% endblock %}
     <div class="footer">
             <div class="copy">
-                <p> &copy; 2017 Boudet Luthiers. Tous droits réservés | <a href="#">Mentions Légales</a></p>
+                <p> &copy; 2017 Boudet Luthiers. Tous droits réservés | <a href="{{ path('mentions') }}">Mentions Légales</a></p>
         </div>
     </div>
     {% block javascripts %}
@@ -70,6 +73,21 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <script src="{{ asset("assets/js/personal.js") }}"></script>
         <script src="{{ asset('assets/js/megamenu.js') }}"></script>
         <script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
+        <script src="{{ asset('assets/js/easyResponsiveTabs.js') }}" type="text/javascript"></script>
+    
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('#horizontalTab').easyResponsiveTabs({
+                    type: 'default', //Types: default, vertical, accordion
+                    width: 'auto', //auto or any width like 600px
+                    fit: true   // 100% fit in a container
+                });
+            });
+        </script>
+    
+    
+        <script>$(document).ready(function(){$(".megamenu").megamenu();});</script>
+        
     {% endblock %}
 
 </body>

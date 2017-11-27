@@ -39,16 +39,14 @@
 			
 		}
 		
-		public function viewAction(Request $request, $id)
+		public function viewAction($id)
 		{
-			$locale = $request->getLocale();
-			$vielle = $request->query->getParameterAttributes('id');
-			$repository = $this->getDoctrine()->getManager()->getRepository('VielleCatalogBundle:Product');
-			dump($vielle);exit();
+			dump($id);
+			$em = $this->getDoctrine()->getManager();
+			$repository = $em->getRepository(Product::class);
+			$vielle = $repository->find($id);
 			
-			$vielle = $repository->findOneBy($id);
 			return $this->render('VielleCatalogBundle:Vielles:single.html.twig', array(
-				'_locale' => $locale,
 				'vielle' => $vielle
 			));
 		}
