@@ -6,7 +6,7 @@
 	 * Time: 14:45
 	 */
 	
-	namespace Vielle\CatalogBundle\Services;
+	namespace Vielle\CatalogBundle\Service;
 	
 	use Symfony\Component\HttpFoundation\File\UploadedFile;
 	

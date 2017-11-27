@@ -15,6 +15,13 @@ services:
             - "@mailer"
 
     vielle_catalog.uploader:
-        class: Vielle\CatalogBundle\Services\Uploader
+        class: Vielle\CatalogBundle\Service\Uploader
         arguments:
             $targetDir: "%products_directory%"
+
+    vielle_catalog.vielleservice:
+            class: Vielle\CatalogBundle\Service\VielleService
+            arguments:
+                - "@doctrine.orm.entity_manager"
+                - "@vielle_catalog.uploader"
+                - "@form.factory"

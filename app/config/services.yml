@@ -33,4 +33,7 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+    Vielle\CatalogBundle\Service\Uploader:
+        arguments:
+            $targetDir: '%products_directory%'
 

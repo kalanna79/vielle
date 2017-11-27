@@ -29,8 +29,13 @@
                 <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
                     <ul>
                         {% for vielle in vielles %}
-                            <li class="simpleCart_shelfItem">
-                                <a class="cbp-vm-image" href="single.html">
+                            {% if loop.index is divisible by(2)  %}
+                            <li class="last simpleCart_shelfItem">
+                                {% else %}
+                        <li class="simpleCart_shelfItem">
+                        {% endif %}
+    
+                        <a class="cbp-vm-image" href="catalog/{{ loop.index }}">
                                     <div class="view view-first">
                                         <div class="inner_content clearfix">
                                             <div class="product_image">

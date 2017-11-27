@@ -105,9 +105,9 @@ background: url(../images/grid_view.png)no-repeat;
 /* Individual view mode styles */
 /* Large grid view */
 .cbp-vm-view-grid ul li {
-	  width: 31.5555%;
+	  width: 49%;
 	  text-align: center;
-	  margin: 2% 2% 0 0;
+	  margin: 1% 1% 0 0;
 	  display: inline-block;
 	  min-height: 160px;
 	  vertical-align: top;
@@ -115,7 +115,7 @@ background: url(../images/grid_view.png)no-repeat;
 	  padding: 5px;
 }
 .cbp-vm-view-grid ul li.last{
-	margin:2% 0 0 0;
+	margin:1% 0 0 0;
 }
 .cbp-vm-view-grid ul li:hover{
 	border:1px solid #f0f0f0;

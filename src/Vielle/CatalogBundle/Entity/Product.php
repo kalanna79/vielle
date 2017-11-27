@@ -50,12 +50,9 @@ class Product
     private $metatag;
 
     /**
-     * @var string
      *
-     * @ORM\Column(name="photo", type="string")
-	 *
-	 * @Assert\NotBlank(message="Merci d'uploader la photo")
-	 * @Assert\File(mimeTypes={ "image/jpeg", "images/png" })
+     * @ORM\Column(name="photo")
+	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\Image", cascade={"persist", "remove"})
      */
     private $photo;
 
@@ -145,7 +142,7 @@ class Product
     /**
      * Set photo
      *
-     * @param string $photo
+     * @param mixed $photo
      *
      * @return Product
      */
@@ -159,7 +156,7 @@ class Product
     /**
      * Get photo
      *
-     * @return string
+     * @return mixed
      */
     public function getPhoto()
     {

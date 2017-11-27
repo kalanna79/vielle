@@ -15,6 +15,7 @@
 	use Vielle\CatalogBundle\Entity\Category;
 	use Vielle\CatalogBundle\Entity\Product;
 	use Vielle\CatalogBundle\Entity\Subcategory;
+	use Vielle\CatalogBundle\VielleCatalogBundle;
 	
 	class ViellesController extends Controller
 	{
@@ -38,9 +39,17 @@
 			
 		}
 		
-		public function singleAction(Request $request)
+		public function viewAction(Request $request, $id)
 		{
 			$locale = $request->getLocale();
+			$vielle = $request->query->getParameterAttributes('id');
+			$repository = $this->getDoctrine()->getManager()->getRepository('VielleCatalogBundle:Product');
+			dump($vielle);exit();
 			
+			$vielle = $repository->findOneBy($id);
+			return $this->render('VielleCatalogBundle:Vielles:single.html.twig', array(
+				'_locale' => $locale,
+				'vielle' => $vielle
+			));
 		}
 	}

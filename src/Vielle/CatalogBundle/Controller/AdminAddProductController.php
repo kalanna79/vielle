@@ -11,35 +11,17 @@
 	
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\HttpFoundation\Request;
-	use Vielle\CatalogBundle\Entity\Product;
-	use Vielle\CatalogBundle\Form\ProductType;
-	use Vielle\CatalogBundle\Services\Uploader;
 	
 	
 	class AdminAddProductController extends Controller
 	{
 		public function addproductAction(Request $request)
 		{
-			$product = new Product();
-			$uploader = new Uploader('assets/images/products');
-			$form = $this->createForm(ProductType::class, $product);
+			$form = $this->get('vielle_catalog.vielleservice')->addVielle($request);
 			
-			if ($request->isMethod('POST'))
+			if ($form->isSubmitted() && $form->isValid())
 			{
-				$form->handleRequest($request);
-				
-				if ($form->isSubmitted() && $form->isValid())
-				{
-					$file = $form['photo']->getData();
-					$fileName = $uploader->upload($file);
-					$product->setPhoto($fileName);
-					
-					$em = $this->getDoctrine()->getManager();
-					$em->persist($product);
-					$em->flush();
-					
-					return $this->redirectToRoute('vielles');
-				}
+				return $this->redirectToRoute('vielles');
 			}
 			return $this->render('VielleCatalogBundle:Admin:add.html.twig', array(
 				'form' => $form->createView()
