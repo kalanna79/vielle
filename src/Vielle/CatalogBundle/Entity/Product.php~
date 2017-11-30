@@ -3,6 +3,7 @@
 namespace Vielle\CatalogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Product
@@ -49,13 +50,17 @@ class Product
     private $metatag;
 
     /**
-     * @var string
      *
-     * @ORM\Column(name="photo", type="text")
+     * @ORM\Column(name="photo")
+	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\Image", cascade={"persist", "remove"})
      */
     private $photo;
-
-
+	
+	/**
+	 * @ORM\ManyToOne(targetEntity="Vielle\CatalogBundle\Entity\Feature")
+	 * @ORM\JoinColumn(nullable=false)
+	 */
+	private $feature;
     /**
      * Get id
      *
@@ -141,7 +146,7 @@ class Product
     /**
      * Set photo
      *
-     * @param string $photo
+     * @param mixed $photo
      *
      * @return Product
      */
@@ -155,11 +160,58 @@ class Product
     /**
      * Get photo
      *
-     * @return string
+     * @return mixed
      */
     public function getPhoto()
     {
         return $this->photo;
     }
-}
 
+    /**
+     * Set subcategory
+     *
+     * @param \Vielle\CatalogBundle\Entity\Subcategory $subcategory
+     *
+     * @return Product
+     */
+    public function setSubcategory(\Vielle\CatalogBundle\Entity\Subcategory $subcategory)
+    {
+        $this->subcategory = $subcategory;
+
+        return $this;
+    }
+
+    /**
+     * Get subcategory
+     *
+     * @return \Vielle\CatalogBundle\Entity\Subcategory
+     */
+    public function getSubcategory()
+    {
+        return $this->subcategory;
+    }
+
+    /**
+     * Set feature
+     *
+     * @param \Vielle\CatalogBundle\Entity\Feature $feature
+     *
+     * @return Product
+     */
+    public function setFeature(\Vielle\CatalogBundle\Entity\Feature $feature)
+    {
+        $this->feature = $feature;
+
+        return $this;
+    }
+
+    /**
+     * Get feature
+     *
+     * @return \Vielle\CatalogBundle\Entity\Feature
+     */
+    public function getFeature()
+    {
+        return $this->feature;
+    }
+}

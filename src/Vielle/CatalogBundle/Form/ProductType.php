@@ -37,6 +37,18 @@
 					],
 					'required' => true,
 				))
+				-> add('feature', EntityType::class, array(
+					'class' => 'VielleCatalogBundle:Feature',
+					'choice_label' => 'name',
+					'multiple' => false,
+					'expanded' => false,
+					'constraints' => [
+						new NotNull([
+							'message' => 'Choisissez le nombre de chanterelles'
+									])
+					],
+					'required' => true,
+				))
 				->add('name', TextType::class, array(
 					'label' => 'Titre',
 					'constraints' => [

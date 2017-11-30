@@ -5,11 +5,13 @@
         <div class="container">
             <div class="col-md-2 sidebar_men">
                 <h3>Categories</h3>
-                <ul class="product-categories color"><li class="cat-item cat-item-42"><a href="#">Vielles rondes</a> <span class="count">(14)</span></li>
-                    <li class="cat-item cat-item-60"><a href="#">2 chanterelles</a> <span class="count">(2)</span></li>
+                {% for subcategory in subcategories %}
+                <ul class="product-categories color"><li class="cat-item cat-item-42"><a href="#">{{ subcategory.name }}</a> <span class="count">({% set val = 0 %}{% for vielle in vielles %}{% if vielle.subcategory.id == subcategory.id %}{% set val = val + 1 %}{% endif %}{% endfor %}{{ val }})</span></li>
+                    <li class="cat-item cat-item-60"><a href="#">{% set val2 = 0 %}{% for vielle in vielles %}{%  if '2 chanterelles' in vielle.metatag %} {%  set val2 = val2 + 1 %} {% endif %}{% endfor %}2 chanterelles</a> <span class="count">({{ val2 }})</span></li>
                     <li class="cat-item cat-item-63"><a href="#">3 chanterelles</a> <span class="count">(2)</span></li>
                     <li class="cat-item cat-item-54"><a href="#">4 chanterelles</a> <span class="count">(8)</span></li>
                 </ul>
+                {% endfor %}
             
             </div>
             <div class="col-md-8 mens_right">
@@ -20,7 +22,7 @@
                             <span>&gt;</span>
                         </li>
                         <li class="home">&nbsp;
-                                         Vielles rondes&nbsp;
+                            {{ categories.name }}&nbsp;
                         </li>
                     </ul>
                     <div class="clearfix"></div>

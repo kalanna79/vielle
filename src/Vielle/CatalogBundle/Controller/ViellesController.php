@@ -10,6 +10,7 @@
 	
 	
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+	use Symfony\Component\HttpFoundation\JsonResponse;
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\HttpFoundation\Response;
 	use Vielle\CatalogBundle\Entity\Category;
@@ -23,6 +24,16 @@
 		{
 			//affichage du catalogue
 			$locale = $request->getLocale();
+			
+			if($request->isXmlHttpRequest())
+			{
+				$style = $request->get('subcategory');
+				$connexion = $this->get('database_connection');
+				$query = "select * from product where subcategory_id = ". $style;
+				$rows = $connexion->fetchAll($query);
+				return new JsonResponse(array('data' => json_encode($rows)));
+			}
+			
 			$em = $this->getDoctrine()->getManager();
 			
 			$categories = $em->getRepository(Category::class)->find("1");
@@ -30,12 +41,12 @@
 			{
 				$subcategories = $em->getRepository(Subcategory::class)->findBy(array('category' => "1"));
 			}
-			$vielles = $em->getRepository(Product::class)->findVielles();
+			$allvielles = $em->getRepository(Product::class)->findAllVielles();
 			return $this->render('VielleCatalogBundle:Vielles:catalog.html.twig', array('_locale'
 																											 => $locale,
 																											   'categories' => $categories,
 																										   'subcategories' => $subcategories,
-																											'vielles' => $vielles));
+																											'vielles' => $allvielles));
 			
 		}
 		

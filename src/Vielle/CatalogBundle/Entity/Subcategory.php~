@@ -18,6 +18,12 @@ class Subcategory
 	 */
 	private $category;
 	
+	/**
+	 * @ORM\ManyToOne(targetEntity="Vielle\CatalogBundle\Entity\Feature")
+	 * @ORM\JoinColumn(nullable=false)
+	 */
+	private $feature;
+	
     /**
      * @var int
      *
@@ -99,5 +105,28 @@ class Subcategory
     {
         return $this->metatag;
     }
-}
 
+    /**
+     * Set category
+     *
+     * @param \Vielle\CatalogBundle\Entity\Category $category
+     *
+     * @return Subcategory
+     */
+    public function setCategory(\Vielle\CatalogBundle\Entity\Category $category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Vielle\CatalogBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+}

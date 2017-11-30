@@ -18,6 +18,8 @@ class Subcategory
 	 */
 	private $category;
 	
+	
+	
     /**
      * @var int
      *

@@ -55,8 +55,12 @@ class Product
 	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\Image", cascade={"persist", "remove"})
      */
     private $photo;
-
-
+	
+	/**
+	 * @ORM\ManyToOne(targetEntity="Vielle\CatalogBundle\Entity\Feature")
+	 * @ORM\JoinColumn(nullable=false)
+	 */
+	private $feature;
     /**
      * Get id
      *
@@ -185,5 +189,29 @@ class Product
     public function getSubcategory()
     {
         return $this->subcategory;
+    }
+
+    /**
+     * Set feature
+     *
+     * @param \Vielle\CatalogBundle\Entity\Feature $feature
+     *
+     * @return Product
+     */
+    public function setFeature(\Vielle\CatalogBundle\Entity\Feature $feature)
+    {
+        $this->feature = $feature;
+
+        return $this;
+    }
+
+    /**
+     * Get feature
+     *
+     * @return \Vielle\CatalogBundle\Entity\Feature
+     */
+    public function getFeature()
+    {
+        return $this->feature;
     }
 }

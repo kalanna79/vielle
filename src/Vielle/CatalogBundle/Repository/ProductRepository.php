@@ -13,12 +13,12 @@ class ProductRepository extends \Doctrine\ORM\EntityRepository
 	/**
 	 * @return array
 	 */
-	public function findVielles()
+	public function findAllVielles()
 	{
 		return $this
 			->createQueryBuilder('v')
 			->where('v.subcategory IN (:subcategory)')
-			->setParameter('subcategory', array(3,4))
+			->setParameter('subcategory', array(3,4,6))
 			->getQuery()
 			->getResult()
 			;
