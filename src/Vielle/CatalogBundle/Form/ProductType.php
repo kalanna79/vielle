@@ -19,6 +19,7 @@
 
 	use Symfony\Component\Validator\Constraints\NotBlank;
 	use Symfony\Component\Validator\Constraints\NotNull;
+	use Vielle\CatalogBundle\Repository\FeatureRepository;
 	
 	class ProductType extends AbstractType
 	{
@@ -38,16 +39,12 @@
 					'required' => true,
 				))
 				-> add('feature', EntityType::class, array(
+					
 					'class' => 'VielleCatalogBundle:Feature',
 					'choice_label' => 'name',
 					'multiple' => false,
 					'expanded' => false,
-					'constraints' => [
-						new NotNull([
-							'message' => 'Choisissez le nombre de chanterelles'
-									])
-					],
-					'required' => true,
+					'required' => false,
 				))
 				->add('name', TextType::class, array(
 					'label' => 'Titre',

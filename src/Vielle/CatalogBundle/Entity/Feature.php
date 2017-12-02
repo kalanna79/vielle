@@ -33,6 +33,12 @@ class Feature
 	 * @ORM\JoinColumn(nullable=false)
 	 */
 	private $subcategory;
+	
+	/**
+	 * @var string
+	 * @ORM\Column(name="tag", type="string", length=255)
+	 */
+	private $tag;
 
 
     /**
@@ -91,5 +97,60 @@ class Feature
     public function getSubcategory()
     {
         return $this->subcategory;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->subcategory = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add subcategory
+     *
+     * @param \Vielle\CatalogBundle\Entity\Subcategory $subcategory
+     *
+     * @return Feature
+     */
+    public function addSubcategory(\Vielle\CatalogBundle\Entity\Subcategory $subcategory)
+    {
+        $this->subcategory[] = $subcategory;
+
+        return $this;
+    }
+
+    /**
+     * Remove subcategory
+     *
+     * @param \Vielle\CatalogBundle\Entity\Subcategory $subcategory
+     */
+    public function removeSubcategory(\Vielle\CatalogBundle\Entity\Subcategory $subcategory)
+    {
+        $this->subcategory->removeElement($subcategory);
+    }
+
+    /**
+     * Set tag
+     *
+     * @param string $tag
+     *
+     * @return Feature
+     */
+    public function setTag($tag)
+    {
+        $this->tag = $tag;
+
+        return $this;
+    }
+
+    /**
+     * Get tag
+     *
+     * @return string
+     */
+    public function getTag()
+    {
+        return $this->tag;
     }
 }

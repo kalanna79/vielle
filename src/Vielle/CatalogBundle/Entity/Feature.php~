@@ -29,10 +29,16 @@ class Feature
     private $name;
 	
 	/**
-	 * @ORM\ManyToOne(targetEntity="Vielle\CatalogBundle\Entity\Subcategory")
+	 * @ORM\ManyToMany(targetEntity="Vielle\CatalogBundle\Entity\Subcategory")
 	 * @ORM\JoinColumn(nullable=false)
 	 */
 	private $subcategory;
+	
+	/**
+	 * @var string
+	 * @ORM\Column(name="tag", type="string", length=255)
+	 */
+	private $tag;
 
 
     /**
@@ -68,5 +74,59 @@ class Feature
     {
         return $this->name;
     }
-}
 
+    /**
+     * Set subcategory
+     *
+     * @param \Vielle\CatalogBundle\Entity\Subcategory $subcategory
+     *
+     * @return Feature
+     */
+    public function setSubcategory(\Vielle\CatalogBundle\Entity\Subcategory $subcategory)
+    {
+        $this->subcategory = $subcategory;
+
+        return $this;
+    }
+
+    /**
+     * Get subcategory
+     *
+     * @return \Vielle\CatalogBundle\Entity\Subcategory
+     */
+    public function getSubcategory()
+    {
+        return $this->subcategory;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->subcategory = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add subcategory
+     *
+     * @param \Vielle\CatalogBundle\Entity\Subcategory $subcategory
+     *
+     * @return Feature
+     */
+    public function addSubcategory(\Vielle\CatalogBundle\Entity\Subcategory $subcategory)
+    {
+        $this->subcategory[] = $subcategory;
+
+        return $this;
+    }
+
+    /**
+     * Remove subcategory
+     *
+     * @param \Vielle\CatalogBundle\Entity\Subcategory $subcategory
+     */
+    public function removeSubcategory(\Vielle\CatalogBundle\Entity\Subcategory $subcategory)
+    {
+        $this->subcategory->removeElement($subcategory);
+    }
+}

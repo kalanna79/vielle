@@ -10,4 +10,14 @@ namespace Vielle\CatalogBundle\Repository;
  */
 class FeatureRepository extends \Doctrine\ORM\EntityRepository
 {
+	public function findBySubcategory($subcatId)
+	{
+		return $this
+			->createQueryBuilder('f')
+			->where('f.subcategory IN (:subcategory)')
+			->setParameter('subcategory', $subcatId)
+			->getQuery()
+			->getResult()
+			;
+	}
 }
