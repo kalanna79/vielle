@@ -18,9 +18,158 @@ class ProductRepository extends \Doctrine\ORM\EntityRepository
 		return $this
 			->createQueryBuilder('v')
 			->where('v.subcategory IN (:subcategory)')
-			->setParameter('subcategory', array(3,4,6))
+			->setParameter('subcategory', array(1,2,3))
 			->getQuery()
 			->getResult()
+			;
+	}
+	
+	public function findAllDecors()
+	{
+		return $this
+			->createQueryBuilder('v')
+			->where('v.subcategory IN (:subcategory)')
+			->setParameter('subcategory', array(4,5,6))
+			->getQuery()
+			->getResult()
+			;
+	}
+	
+	public function findViellesRondes()
+	{
+		return $this
+			->createQueryBuilder('r')
+			->where('r.subcategory IN (:subcategory)')
+			->setParameter('subcategory', 1)
+			->getQuery()
+			->getResult()
+			;
+	}
+	
+	public function findViellesPlates()
+	{
+		return $this
+			->createQueryBuilder('p')
+			->where('p.subcategory IN (:subcategory)')
+			->setParameter('subcategory', 2)
+			->getQuery()
+			->getResult()
+			;
+	}
+	
+	public function findSpecial()
+	{
+		return $this
+			->createQueryBuilder('s')
+			->where('s.subcategory IN (:subcategory)')
+			->setParameter('subcategory', 3)
+			->getQuery()
+			->getResult()
+			;
+	}
+	
+	public function findTetes()
+	{
+		return $this
+			->createQueryBuilder('t')
+			->where('t.subcategory IN (:subcategory)')
+			->setParameter('subcategory', 4)
+			->getQuery()
+			->getResult()
+			;
+	}
+	
+	public function findTables()
+	{
+		return $this
+			->createQueryBuilder('ta')
+			->where('ta.subcategory IN (:subcategory')
+			->setParameter('subcategory', 5)
+			->getQuery()
+			->getResult()
+			;
+	}
+	
+	public function findCaisses()
+	{
+		return $this
+			->createQueryBuilder('c')
+			->where('c.subcategory IN (:subcategory)')
+			->setParameter('subcategory', 6)
+			->getQuery()
+			->getResult()
+			;
+	}
+	
+	public function countRondes()
+	{
+		return $this
+			->createQueryBuilder('cr')
+			->select('count(cr.subcategory)')
+			->where('cr.subcategory in (:subcategory)')
+			->setParameter('subcategory', 1)
+			->getQuery()
+			->getSingleScalarResult()
+			;
+	}
+	
+	public function countPlates()
+	{
+		return $this
+			->createQueryBuilder('cp')
+			->select('count(cp.subcategory)')
+			->where('cp.subcategory in (:subcategory)')
+			->setParameter('subcategory', 2)
+			->getQuery()
+			->getSingleScalarResult()
+			;
+	}
+	
+	public function countSpeciales()
+	{
+		return $this
+			->createQueryBuilder('cs')
+			->select('count(cs.subcategory)')
+			->where('cs.subcategory in (:subcategory)')
+			->setParameter('subcategory', 3)
+			->getQuery()
+			->getSingleScalarResult()
+			;
+	}
+	
+	public function count2chanterelles()
+	{
+		return $this
+			->createQueryBuilder('c')
+			->select('count(c.feature)')
+			->where('c.feature in (:feature)')
+			->setParameter('feature', 1)
+			->getQuery()
+			->getSingleScalarResult()
+			;
+	}
+	
+	public function count3chanterelles()
+	{
+		return $this
+			->createQueryBuilder('c')
+			->select('count(c.feature)')
+			->where('c.feature in (:feature)')
+			->setParameter('feature', 2)
+			->getQuery()
+			->getSingleScalarResult()
+			;
+	}
+	
+	public function count4chanterelles()
+	{
+		return $this
+			->createQueryBuilder('c')
+			->select('count(c.feature)')
+			->where('c.feature in (:feature)')
+			->setParameter('feature', 3)
+			->getQuery()
+			->getSingleScalarResult()
 			;
 	}
 }

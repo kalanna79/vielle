@@ -10,52 +10,52 @@
 	
 	
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-	use Symfony\Component\HttpFoundation\JsonResponse;
 	use Symfony\Component\HttpFoundation\Request;
-	use Symfony\Component\HttpFoundation\Response;
-	use Vielle\CatalogBundle\Entity\Category;
 	use Vielle\CatalogBundle\Entity\Product;
-	use Vielle\CatalogBundle\Entity\Subcategory;
-	use Vielle\CatalogBundle\VielleCatalogBundle;
+	use Vielle\CatalogBundle\Service\VielleService;
 	
 	class ViellesController extends Controller
 	{
-		public function catalogAction(Request $request)
+		/**
+		 * @param Request $request
+		 * @param null    $id
+		 * @param VielleService $vielleService
+		 * @return \Symfony\Component\HttpFoundation\Response
+		 */
+		public function catalogAction(Request $request, $id = null, VielleService $vielleService)
 		{
 			//affichage du catalogue
 			$locale = $request->getLocale();
 			
-			if($request->isXmlHttpRequest())
+			$repoVielles = $vielleService->recupReposVielles();
+			
+			$url = $request->getUri();
+			if (stristr($url, 'subcat'))
 			{
-				$style = $request->get('subcategory');
-				$connexion = $this->get('database_connection');
-				$query = "select * from product where subcategory_id = ". $style;
-				$rows = $connexion->fetchAll($query);
-				return new JsonResponse(array('data' => json_encode($rows)));
+				$vielles = $vielleService->showSubCategories($id);
 			}
-			
-			$em = $this->getDoctrine()->getManager();
-			
-			$categories = $em->getRepository(Category::class)->find("1");
-			if ($categories)
+			elseif (stristr($url, 'chant'))
 			{
-				$subcategories = $em->getRepository(Subcategory::class)->findBy(array('category' => "1"));
-			}
-			$allvielles = $em->getRepository(Product::class)->findAllVielles();
-			return $this->render('VielleCatalogBundle:Vielles:catalog.html.twig', array('_locale'
-																											 => $locale,
-																											   'categories' => $categories,
-																										   'subcategories' => $subcategories,
-																											'vielles' => $allvielles));
+				$vielles = $vielleService->showFeatures($id);
+				
+			} else { $vielles = $repoVielles[6]; }
 			
+			$reponse = $this->render('VielleCatalogBundle:Vielles:catalog.html.twig', array(
+				'categories' => $repoVielles[1],
+				'subcategories' =>$repoVielles[2],
+				'features' => $repoVielles[3],
+				'counters' => $repoVielles[4],
+				'countFeature' => $repoVielles[5],
+				'vielles' => $vielles
+			));
+			
+			return $reponse;
 		}
 		
 		public function viewAction($id)
 		{
-			dump($id);
 			$em = $this->getDoctrine()->getManager();
-			$repository = $em->getRepository(Product::class);
-			$vielle = $repository->find($id);
+			$vielle = $em->getRepository(Product::class)->find($id);
 			
 			return $this->render('VielleCatalogBundle:Vielles:single.html.twig', array(
 				'vielle' => $vielle

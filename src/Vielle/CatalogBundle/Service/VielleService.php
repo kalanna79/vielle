@@ -11,6 +11,9 @@
 	use Doctrine\ORM\EntityManagerInterface;
 	use Symfony\Component\HttpFoundation\Request;
 	use Vielle\CatalogBundle\Entity\Product;
+	use Vielle\CatalogBundle\Entity\Feature;
+	use Vielle\CatalogBundle\Entity\Category;
+	use Vielle\CatalogBundle\Entity\Subcategory;
 	use Vielle\CatalogBundle\Form\ProductType;
 	use Symfony\Component\Form\FormFactory;
 	
@@ -44,5 +47,46 @@
 				}
 			
 			return $form;
+		}
+		
+		public function showFeatures($id)
+		{
+			return $this->em->getRepository(Product::class)->findByFeature($id);
+			
+		}
+		
+		public function showSubcategories($id)
+		{
+			return $this->em->getRepository(Product::class)->findBySubcategory($id);
+		}
+		
+		public function counters()
+		{
+			$counter = array();
+			$counter['1'] = $this->em->getRepository(Product::class)->countRondes();
+			$counter['2'] = $this->em->getRepository(Product::class)->countPlates();
+			$counter['3'] = $this->em->getRepository(Product::class)->countSpeciales();
+			return $counter;
+		}
+		
+		public function counterFeatures()
+		{
+			$counterFeatures = array();
+			$counterFeatures['1'] = $this->em->getRepository(Product::class)->count2chanterelles();
+			$counterFeatures['2'] = $this->em->getRepository(Product::class)->count3chanterelles();
+			$counterFeatures['3'] = $this->em->getRepository(Product::class)->count4chanterelles();
+			return $counterFeatures;
+		}
+		
+		public function recupReposVielles()
+		{
+			$repoVielles = array();
+			$repoVielles['1'] = $this->em->getRepository(Category::class)->find("1");
+			$repoVielles['2'] = $this->em->getRepository(Subcategory::class)->findByCategory('1');
+			$repoVielles['3'] = $this->em->getRepository(Feature::class)->findAll();
+			$repoVielles['4'] = $this->counters();
+			$repoVielles['5'] = $this->counterFeatures();
+			$repoVielles['6'] = $this->em->getRepository(Product::class)->findAllVielles();
+			return $repoVielles;
 		}
 	}
