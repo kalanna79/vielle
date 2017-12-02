@@ -11,8 +11,11 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         $locale = $request->getLocale();
-        $content = $this->get('templating')->render('VielleCatalogBundle:Default:index.html.twig', array('_locale'
-                                                                                                         =>$locale));
+		$subcategories = $this->getDoctrine()->getManager()->getRepository(Subcategory::class)->findBy(array('category' => "1"));
+	
+		$content = $this->get('templating')->render('VielleCatalogBundle:Default:index.html.twig', array('_locale'
+                                                                                                         =>$locale,
+																										 'subcategories'=>$subcategories));
         return new Response($content);
     }
     

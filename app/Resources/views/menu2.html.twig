@@ -10,14 +10,15 @@
                         <div class="megapanel">
                             <div class="h_nav">
                                 <ul>
-                                    <li><a href="men.html">Vielles plates</a></li>
-                                    <li><a href="#">Vielles rondes</a></li>
-                                    <li><a href="#">Instruments spéciaux</a></li>
+                                    {% for subcategory in subcategories %}
+                                    <li><a href="{{ path('subcat', {'id': subcategory.id}) }}">{{ subcategory.name }}</a>
+                                    </li>
+                                    {% endfor %}
                                 </ul>
                             </div>
                         </div>
                     </li>
-                    <li class="princ"><a class="color4" href="#">Décors</a>
+                    <li class="princ"><a class="color4" href="{{ path('decors') }}">Décors</a>
                         <div class="megapanel">
                             <div class="h_nav">
                                 <ul>

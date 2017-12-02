@@ -15,13 +15,26 @@
 	
 	class AdminAddProductController extends Controller
 	{
-		public function addproductAction(Request $request)
+		public function addvielleAction(Request $request)
 		{
 			$form = $this->get('vielle_catalog.vielleservice')->addVielle($request);
 			
 			if ($form->isSubmitted() && $form->isValid())
 			{
 				return $this->redirectToRoute('vielles');
+			}
+			return $this->render('VielleCatalogBundle:Admin:add.html.twig', array(
+				'form' => $form->createView()
+			));
+		}
+		
+		public function adddecorAction(Request $request)
+		{
+			$form = $this->get('vielle_catalog.vielleservice')->addVielle($request);
+			
+			if ($form->isSubmitted() && $form->isValid())
+			{
+				return $this->redirectToRoute('decors');
 			}
 			return $this->render('VielleCatalogBundle:Admin:add.html.twig', array(
 				'form' => $form->createView()

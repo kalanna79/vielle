@@ -4,7 +4,27 @@ index:
 
 vielles:
     path:      /vielles
-    defaults: { _controller: VielleCatalogBundle:Vielles:catalog }
+    defaults:
+     _controller: VielleCatalogBundle:Vielles:catalog
+
+subcat:
+    path:      /subcat/{id}
+    defaults:
+        _controller: VielleCatalogBundle:Vielles:catalog
+    requirements:
+        sub: \d+
+
+chant:
+    path:      /chant/{id}
+    defaults:
+        _controller: VielleCatalogBundle:Vielles:catalog
+    requirements:
+        feature: \d+
+
+decors:
+    path:      /decors
+    defaults:
+        _controller: VielleCatalogBundle:Vielles:catalog
 
 
 singlevielle:
@@ -14,11 +34,23 @@ singlevielle:
     requirements:
         id: \d+
 
-
-vielle_catalog_add:
-    path:      /add
+singledecor:
+    path:      /catalog/{id}
     defaults:
-        _controller: VielleCatalogBundle:AdminAddProduct:addproduct
+        _controller: VielleCatalogBundle:Decors:view
+    requirements:
+        id: \d+
+
+
+vielle_catalog_addvielle:
+    path:      /addvielle
+    defaults:
+        _controller: VielleCatalogBundle:AdminAddProduct:addvielle
+
+vielle_catalog_adddecor:
+    path:      /adddecor
+    defaults:
+        _controller: VielleCatalogBundle:AdminAddProduct:adddecor
 
 
 vielle_catalog_edit:

@@ -7,8 +7,7 @@
         <h2>Ajouter une vielle</h2>
         {{ form_start(form) }}
         <div class="col-md-6 to">
-                {{ form_widget(form.subcategory, {'attr':{'placeholder': 'Sous-catégorie', 'class': 'product-qty'}
-                }) }}
+                {{ form_widget(form.subcategory, {'attr':{'placeholder': 'Sous-catégorie'}}) }}
                 {{ form_widget(form.feature, {'attr':{'placeholder': 'Nombre de chanterelles'} }) }}
                 {{ form_widget(form.name, {'attr':{'placeholder': 'Nom'} }) }}
             {{ form_widget(form.photo, {'attr':{'placeholder': 'Télécharger la photo'}}) }}

@@ -4,37 +4,14 @@
     <div class="men">
         <div class="container">
             <div class="col-md-2 sidebar_men">
-                <h3>Nos vielles</h3>
-                <ul class="product-categories color">
-                    {% for subcategory in subcategories %}
-    
-                    <li class="cat-item cat-item-54"><a href="{{ path('subcat', {'id': subcategory.id}) }}">{{ subcategory.name
-                            }}</a>
-                        <span class="count">
-                            (
-                            {% for key, value in counters %}
-                                {% if key == subcategory.id %}
-                                    {{ value }}
-                            {% endif %}
-                            {% endfor %}
-                            )
-                        </span></li>
-                    {% endfor %}
-
+                <h3>Categories</h3>
+                {% for subcategory in subcategories %}
+                <ul class="product-categories color"><li class="cat-item cat-item-42"><a href="#">{{ subcategory.name }}</a> <span class="count">({% set val = 0 %}{% for vielle in vielles %}{% if vielle.subcategory.id == subcategory.id %}{% set val = val + 1 %}{% endif %}{% endfor %}{{ val }})</span></li>
+                    <li class="cat-item cat-item-60"><a href="#">{% set val2 = 0 %}{% for vielle in vielles %}{%  if '2 chanterelles' in vielle.metatag %} {%  set val2 = val2 + 1 %} {% endif %}{% endfor %}2 chanterelles</a> <span class="count">({{ val2 }})</span></li>
+                    <li class="cat-item cat-item-63"><a href="#">3 chanterelles</a> <span class="count">(2)</span></li>
+                    <li class="cat-item cat-item-54"><a href="#">4 chanterelles</a> <span class="count">(8)</span></li>
                 </ul>
-                <ul class="product-categories color">
-                    {% for feature in features|slice(0, 3) %}
-                    <li class="cat-item cat-item-60"><a href="{{ path('chant', {'id': feature.id}) }}">{{ feature.name
-                            }}</a>
-                        <span class="count">(
-                            {% for key, value in countFeature %}
-                                {% if key == feature.id %}
-                                    {{ value }}
-                                {% endif %}
-                            {% endfor %})</span></li>
-                    {% endfor %}
-
-                </ul>
+                {% endfor %}
             
             </div>
             <div class="col-md-8 mens_right">
@@ -45,7 +22,7 @@
                             <span>&gt;</span>
                         </li>
                         <li class="home">&nbsp;
-                            {{ categories.name }}&nbsp;
+                            {{ categories.name | capitalize }}
                         </li>
                     </ul>
                     <div class="clearfix"></div>
@@ -54,9 +31,7 @@
                 <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
                     <ul>
                         {% for vielle in vielles %}
-                        
-    
-                        {% if loop.index is divisible by(2)  %}
+                            {% if loop.index is divisible by(2)  %}
                             <li class="last simpleCart_shelfItem">
                                 {% else %}
                         <li class="simpleCart_shelfItem">
