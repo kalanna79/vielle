@@ -1,8 +1,8 @@
 services:
     _defaults:
-        autowire: false
+        autowire: true
         autoconfigure: true
-        public: true
+        public: false
 
 #    vielle_catalog.example:
 #        class: Vielle\CatalogBundle\Example
@@ -14,14 +14,14 @@ services:
             - "@doctrine.orm.entity_manager"
             - "@mailer"
 
-    vielle_catalog.uploader:
-        class: Vielle\CatalogBundle\Service\Uploader
-        arguments:
-            $targetDir: "%products_directory%"
+    #vielle_catalog.uploader:
+    #    class: Vielle\CatalogBundle\Service\Uploader
+     #   arguments:
+      #      $targetDir: "%products_directory%"
 
-    vielle_catalog.vielleservice:
-            class: Vielle\CatalogBundle\Service\VielleService
-            arguments:
-                - "@doctrine.orm.entity_manager"
-                - "@vielle_catalog.uploader"
-                - "@form.factory"
+    #vielle_catalog.vielleservice:
+     #       class: Vielle\CatalogBundle\Service\VielleService
+      #      arguments:
+       #         - "@doctrine.orm.entity_manager"
+        #        - "@vielle_catalog.uploader"
+         #       - "@form.factory"

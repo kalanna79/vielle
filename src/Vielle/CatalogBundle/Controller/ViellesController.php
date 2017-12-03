@@ -17,16 +17,17 @@
 	class ViellesController extends Controller
 	{
 		/**
-		 * @param Request $request
-		 * @param null    $id
+		 * @param Request       $request
 		 * @param VielleService $vielleService
+		 * @param null          $id
 		 * @return \Symfony\Component\HttpFoundation\Response
 		 */
-		public function catalogAction(Request $request, $id = null, VielleService $vielleService)
+		public function catalogAction(Request $request, VielleService $vielleService, $id = null)
 		{
 			//affichage du catalogue
 			$locale = $request->getLocale();
 			
+			//$service = $this->get('vielle_catalog.vielleservice');
 			$repoVielles = $vielleService->recupReposVielles();
 			
 			$url = $request->getUri();
@@ -52,6 +53,10 @@
 			return $reponse;
 		}
 		
+		/**
+		 * @param $id
+		 * @return \Symfony\Component\HttpFoundation\Response
+		 */
 		public function viewAction($id)
 		{
 			$em = $this->getDoctrine()->getManager();

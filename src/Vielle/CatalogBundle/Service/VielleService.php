@@ -16,20 +16,25 @@
 	use Vielle\CatalogBundle\Entity\Subcategory;
 	use Vielle\CatalogBundle\Form\ProductType;
 	use Symfony\Component\Form\FormFactory;
+	use Vielle\CatalogBundle\Service\Uploader;
 	
 	class VielleService
 	{
 		private $em;
 		private $form;
-		private $uploader;
 		
-		public function __construct(EntityManagerInterface $em, Uploader $uploader, FormFactory $form)
+		public function __construct(EntityManagerInterface $em, FormFactory $form)
 		{
+			dump('hello');exit();
+			
 			$this->em = $em;
-			$this->uploader = $uploader;
 			$this->form = $form;
 		}
 		
+		/**
+		 * @param Request $request
+		 * @return \Symfony\Component\Form\FormInterface
+		 */
 		public function addVielle(Request $request)
 		{
 			$product = new Product();
@@ -39,7 +44,7 @@
 				if ($form->isSubmitted() && $form->isValid()) {
 					$form->getData();
 					$file = $form['photo']->getData()->getFile();
-					$fileName = $this->uploader->upload($file);
+					$fileName = $this->container->get('uploader')->upload($file);
 					$product->setPhoto($fileName);
 					
 					$this->em->persist($product);
@@ -49,17 +54,29 @@
 			return $form;
 		}
 		
+		/**
+		 * @param $id
+		 * @return mixed
+		 */
 		public function showFeatures($id)
 		{
 			return $this->em->getRepository(Product::class)->findByFeature($id);
 			
 		}
 		
+		/**
+		 * @param $id
+		 * @return mixed
+		 */
 		public function showSubcategories($id)
 		{
 			return $this->em->getRepository(Product::class)->findBySubcategory($id);
 		}
 		
+		/**
+		 * Count how many products in each subcategory
+		 * @return array
+		 */
 		public function counters()
 		{
 			$counter = array();
@@ -69,6 +86,10 @@
 			return $counter;
 		}
 		
+		/**
+		 * count how many products with the selected feature
+		 * @return array
+		 */
 		public function counterFeatures()
 		{
 			$counterFeatures = array();
@@ -78,6 +99,10 @@
 			return $counterFeatures;
 		}
 		
+		/**
+		 * find all variables in repositories and return an array for catalog views
+		 * @return array
+		 */
 		public function recupReposVielles()
 		{
 			$repoVielles = array();
@@ -87,6 +112,7 @@
 			$repoVielles['4'] = $this->counters();
 			$repoVielles['5'] = $this->counterFeatures();
 			$repoVielles['6'] = $this->em->getRepository(Product::class)->findAllVielles();
+			dump($repoVielles);exit();
 			return $repoVielles;
 		}
 	}

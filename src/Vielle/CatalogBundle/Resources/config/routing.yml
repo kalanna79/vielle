@@ -24,7 +24,7 @@ chant:
 decors:
     path:      /decors
     defaults:
-        _controller: VielleCatalogBundle:Vielles:catalog
+        _controller: VielleCatalogBundle:Decors:catalog
 
 
 singlevielle:
