@@ -6,9 +6,9 @@
             <div class="col-md-2 sidebar_men">
                 <h3>Nos vielles</h3>
                 <ul class="product-categories color">
-                    {% for subcategory in subcategories %}
+                    {% for subcategory in subvielles %}
     
-                    <li class="cat-item cat-item-54"><a href="{{ path('subcat', {'id': subcategory.id}) }}">{{ subcategory.name
+                    <li class="cat-item cat-item-54"><a href="{{ path('viellecat', {'id': subcategory.id}) }}">{{ subcategory.name
                             }}</a>
                         <span class="count">
                             (
@@ -45,7 +45,7 @@
                             <span>&gt;</span>
                         </li>
                         <li class="home">&nbsp;
-                            {{ categories.name }}&nbsp;
+                            {{ categories.name | capitalize }}&nbsp;
                         </li>
                     </ul>
                     <div class="clearfix"></div>

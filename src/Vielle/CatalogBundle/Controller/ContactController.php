@@ -11,6 +11,7 @@
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\HttpFoundation\Request;
 	use Vielle\CatalogBundle\Form\ContactType;
+	use Vielle\CatalogBundle\Entity\Subcategory;
 	
 	class ContactController extends Controller
 	{
@@ -30,6 +31,15 @@
 						$this->addFlash('error', 'Une erreur s\'est produite, merci de recommencer');
 				}
 			}
-			return $this->render('VielleCatalogBundle:Contact:contact.html.twig', array('form' => $form->createView()));
+			
+			$locale = $request->getLocale();
+			$vielles = $this->getDoctrine()->getManager()->getRepository(Subcategory::class)->findBy(array('category' => "1"));
+			$decors = $this->getDoctrine()->getManager()->getRepository(Subcategory::class)->findBy(array('category' => "2"));
+			
+			return $this->render('VielleCatalogBundle:Contact:contact.html.twig', array('form' => $form->createView()
+																						,'_locale'
+																									   =>$locale,
+																						'subcategories'=>$vielles,
+																						'decors'=>$decors));
 		}
 	}

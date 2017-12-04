@@ -17,7 +17,15 @@
 	{
 		public function mentionsAction()
 		{
-			$content = $this->get('templating')->render('VielleCatalogBundle:Default:mentions.html.twig');
+			
+			$locale = $request->getLocale();
+			$vielles = $this->getDoctrine()->getManager()->getRepository(Subcategory::class)->findBy(array('category' => "1"));
+			$decors = $this->getDoctrine()->getManager()->getRepository(Subcategory::class)->findBy(array('category' => "2"));
+			
+			$content = $this->get('templating')->render('VielleCatalogBundle:Default:mentions.html.twig', array('_locale'
+																																   =>$locale,
+																													'subcategories'=>$vielles,
+																													'decors'=>$decors));
 			return new Response($content);
 		}
 	}

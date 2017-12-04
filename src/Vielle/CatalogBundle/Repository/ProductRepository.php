@@ -172,4 +172,40 @@ class ProductRepository extends \Doctrine\ORM\EntityRepository
 			->getSingleScalarResult()
 			;
 	}
+	
+	public function countTetes()
+	{
+		return $this
+			->createQueryBuilder('t')
+			->select('count(t.subcategory)')
+			->where('t.subcategory in (:subcategory)')
+			->setParameter('subcategory', 4)
+			->getQuery()
+			->getSingleScalarResult()
+			;
+	}
+	
+	public function countTables()
+	{
+		return $this
+			->createQueryBuilder('t')
+			->select('count(t.subcategory)')
+			->where('t.subcategory in (:subcategory)')
+			->setParameter('subcategory', 5)
+			->getQuery()
+			->getSingleScalarResult()
+			;
+	}
+	
+	public function countCaisses()
+	{
+		return $this
+			->createQueryBuilder('c')
+			->select('count(c.subcategory)')
+			->where('c.subcategory in (:subcategory)')
+			->setParameter('subcategory', 6)
+			->getQuery()
+			->getSingleScalarResult()
+			;
+	}
 }

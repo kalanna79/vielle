@@ -69,6 +69,15 @@
 			return $counter;
 		}
 		
+		public function countDecors()
+		{
+			$counter = array();
+			$counter['1'] = $this->em->getRepository(Product::class)->countTetes();
+			$counter['2'] = $this->em->getRepository(Product::class)->countTables();
+			$counter['3'] = $this->em->getRepository(Product::class)->countCaisses();
+			return $counter;
+		}
+		
 		public function counterFeatures()
 		{
 			$counterFeatures = array();
@@ -78,15 +87,21 @@
 			return $counterFeatures;
 		}
 		
-		public function recupReposVielles()
+		public function recupRepos()
 		{
 			$repoVielles = array();
 			$repoVielles['1'] = $this->em->getRepository(Category::class)->find("1");
 			$repoVielles['2'] = $this->em->getRepository(Subcategory::class)->findByCategory('1');
-			$repoVielles['3'] = $this->em->getRepository(Feature::class)->findAll();
-			$repoVielles['4'] = $this->counters();
-			$repoVielles['5'] = $this->counterFeatures();
-			$repoVielles['6'] = $this->em->getRepository(Product::class)->findAllVielles();
+			$repoVielles['3'] = $this->em->getRepository(Category::class)->find("2");
+			$repoVielles['4'] = $this->em->getRepository(Subcategory::class)->findByCategory('2');
+			$repoVielles['5'] = $this->em->getRepository(Feature::class)->findAll();
+			$repoVielles['6'] = $this->counters();
+			$repoVielles['7'] = $this->counterFeatures();
+			$repoVielles['8'] = $this->em->getRepository(Product::class)->findAllVielles();
+			$repoVielles['9'] = $this->countDecors();
+			$repoVielles['10'] = $this->em->getRepository(Product::class)->findAllDecors();
+			
+			
 			return $repoVielles;
 		}
 	}

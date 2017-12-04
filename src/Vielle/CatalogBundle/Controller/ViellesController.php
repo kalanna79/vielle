@@ -12,41 +12,43 @@
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\HttpFoundation\Request;
 	use Vielle\CatalogBundle\Entity\Product;
-	use Vielle\CatalogBundle\Service\VielleService;
+	use Vielle\CatalogBundle\Entity\Subcategory;
 	
 	class ViellesController extends Controller
 	{
 		/**
 		 * @param Request $request
 		 * @param null    $id
-		 * @param VielleService $vielleService
 		 * @return \Symfony\Component\HttpFoundation\Response
 		 */
-		public function catalogAction(Request $request, $id = null, VielleService $vielleService)
+		public function catalogAction(Request $request, $id = null)
 		{
 			//affichage du catalogue
 			$locale = $request->getLocale();
 			
-			$repoVielles = $vielleService->recupReposVielles();
+			$repoVielles = $this->get('vielle_catalog.vielleservice')->recupRepos();
+			
 			
 			$url = $request->getUri();
-			if (stristr($url, 'subcat'))
+			if (stristr($url, 'subcatvielles'))
 			{
-				$vielles = $vielleService->showSubCategories($id);
+				$vielles = $this->get('vielle_catalog.vielleservice')->showSubCategories($id);
 			}
 			elseif (stristr($url, 'chant'))
 			{
-				$vielles = $vielleService->showFeatures($id);
+				$vielles = $this->get('vielle_catalog.vielleservice')->showFeatures($id);
 				
-			} else { $vielles = $repoVielles[6]; }
+			} else { $vielles = $repoVielles[8]; }
 			
 			$reponse = $this->render('VielleCatalogBundle:Vielles:catalog.html.twig', array(
 				'categories' => $repoVielles[1],
-				'subcategories' =>$repoVielles[2],
-				'features' => $repoVielles[3],
-				'counters' => $repoVielles[4],
-				'countFeature' => $repoVielles[5],
-				'vielles' => $vielles
+				'subvielles' =>$repoVielles[2],
+				'subdecors' =>$repoVielles[4],
+				'features' => $repoVielles[5],
+				'counters' => $repoVielles[6],
+				'countFeature' => $repoVielles[7],
+				'vielles' => $vielles,
+				'decors' => $repoVielles[3]
 			));
 			
 			return $reponse;
@@ -62,3 +64,5 @@
 			));
 		}
 	}
+
+	

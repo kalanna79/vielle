@@ -107,7 +107,7 @@ background: url(../images/grid_view.png)no-repeat;
 .cbp-vm-view-grid ul li {
 	  width: 49%;
 	  text-align: center;
-	  margin: 1% 1% 0 0;
+	  margin: 1% 0 1% 0;
 	  display: inline-block;
 	  min-height: 160px;
 	  vertical-align: top;
@@ -115,7 +115,7 @@ background: url(../images/grid_view.png)no-repeat;
 	  padding: 5px;
 }
 .cbp-vm-view-grid ul li.last{
-	margin:1% 0 0 0;
+	margin:1% 0 1% 0;
 }
 .cbp-vm-view-grid ul li:hover{
 	border:1px solid #f0f0f0;
@@ -212,7 +212,7 @@ background: url(../images/grid_view.png)no-repeat;
 @media (max-width:1024px){
 .cbp-vm-view-grid ul li {
 	width:31.5%;
-	min-height: 345px;
+	/*min-height: 345px;*/
 }
 }
 @media (max-width:800px){
@@ -223,7 +223,7 @@ background: url(../images/grid_view.png)no-repeat;
 @media (max-width:640px){
 .cbp-vm-view-grid ul li {
 	width: 28.5%;
-	min-height: 305px;
+	/*min-height: 305px;*/
 }
 .cbp-vm-view-list .cbp-vm-image {
 	width: 33%;
@@ -232,16 +232,16 @@ background: url(../images/grid_view.png)no-repeat;
 @media (max-width:480px){
 .cbp-vm-view-grid ul li {
 	width: 47.5%;
-	min-height:330px;
+	/*min-height:330px;*/
 }	
 .cbp-vm-view-grid ul li.last {
-  margin: 2% 0 2% 0;
+  margin: 1% 0 1% 0;
 }
 }
 @media (max-width:320px){
 .cbp-vm-view-grid ul li {
 	width: 46.5%;
-	min-height: 260px;
+	/*min-height: 260px;*/
 }
 .cbp-vm-view-list .cbp-vm-details {
 	width:30%;

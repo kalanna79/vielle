@@ -12,12 +12,21 @@
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\HttpFoundation\Request;
 	use Symfony\Component\HttpFoundation\Response;
+	use Vielle\CatalogBundle\Entity\Subcategory;
+	
 	
 	class RestaurationController extends Controller
 	{
-		public function restaurationAction()
+		public function restaurationAction(Request $request)
 		{
-			$content = $this->get('templating')->render('VielleCatalogBundle:Default:restauration.html.twig');
+			$locale = $request->getLocale();
+			$vielles = $this->getDoctrine()->getManager()->getRepository(Subcategory::class)->findBy(array('category' => "1"));
+			$decors = $this->getDoctrine()->getManager()->getRepository(Subcategory::class)->findBy(array('category' => "2"));
+			
+			$content = $this->get('templating')->render('VielleCatalogBundle:Default:restauration.html.twig', array('_locale'
+																															=>$locale,
+																											 'subcategories'=>$vielles,
+																											 'decors'=>$decors));
 			return new Response($content);
 		}
 	}

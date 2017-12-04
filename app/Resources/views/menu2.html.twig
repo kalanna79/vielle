@@ -10,8 +10,8 @@
                         <div class="megapanel">
                             <div class="h_nav">
                                 <ul>
-                                    {% for subcategory in subcategories %}
-                                    <li><a href="{{ path('subcat', {'id': subcategory.id}) }}">{{ subcategory.name }}</a>
+                                    {% for subcategory in subvielles %}
+                                    <li><a href="{{ path('viellecat', {'id': subcategory.id}) }}">{{ subcategory.name }}</a>
                                     </li>
                                     {% endfor %}
                                 </ul>
@@ -22,9 +22,11 @@
                         <div class="megapanel">
                             <div class="h_nav">
                                 <ul>
-                                    <li><a href="#">Têtes</a></li>
-                                    <li><a href="#">Marqueterie</a></li>
-                                    <li><a href="#">Tables</a></li>
+                                    {% for subcategory in subdecors %}
+                                        <li><a href="{{ path('decorcat', {'id': subcategory.id}) }}">{{ subcategory
+                                                .name }}</a>
+                                        </li>
+                                    {% endfor %}
                                 </ul>
                             </div>
                         </div>

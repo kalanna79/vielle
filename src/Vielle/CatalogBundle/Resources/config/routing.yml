@@ -7,10 +7,17 @@ vielles:
     defaults:
      _controller: VielleCatalogBundle:Vielles:catalog
 
-subcat:
-    path:      /subcat/{id}
+viellecat:
+    path:      /subcatvielles/{id}
     defaults:
         _controller: VielleCatalogBundle:Vielles:catalog
+    requirements:
+        sub: \d+
+
+decorcat:
+    path:      /subcatdecor/{id}
+    defaults:
+        _controller: VielleCatalogBundle:Decors:catalog
     requirements:
         sub: \d+
 
@@ -24,7 +31,7 @@ chant:
 decors:
     path:      /decors
     defaults:
-        _controller: VielleCatalogBundle:Vielles:catalog
+        _controller: VielleCatalogBundle:Decors:catalog
 
 
 singlevielle:
