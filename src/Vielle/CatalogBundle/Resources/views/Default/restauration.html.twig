@@ -1,5 +1,5 @@
 {% extends "base.html.twig" %}
-{% block menu %}{% include("menu2.html.twig") %}{% endblock %}
+{% block menu %} {{ render(controller('VielleCatalogBundle:Menu:menu', {})) }}{% endblock %}
 {% block body %}
     <div class="container">
         <div class="grid_1">

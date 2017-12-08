@@ -33,13 +33,9 @@
 			}
 			
 			$locale = $request->getLocale();
-			$vielles = $this->getDoctrine()->getManager()->getRepository(Subcategory::class)->findBy(array('category' => "1"));
-			$decors = $this->getDoctrine()->getManager()->getRepository(Subcategory::class)->findBy(array('category' => "2"));
 			
 			return $this->render('VielleCatalogBundle:Contact:contact.html.twig', array('form' => $form->createView()
 																						,'_locale'
-																									   =>$locale,
-																						'subcategories'=>$vielles,
-																						'decors'=>$decors));
+																									   =>$locale));
 		}
 	}

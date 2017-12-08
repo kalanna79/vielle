@@ -100,8 +100,16 @@
 			$repoVielles['8'] = $this->em->getRepository(Product::class)->findAllVielles();
 			$repoVielles['9'] = $this->countDecors();
 			$repoVielles['10'] = $this->em->getRepository(Product::class)->findAllDecors();
-			
-			
 			return $repoVielles;
+		}
+		
+		public function showForSubMenu()
+		{
+			$submenu = array();
+			$submenu['1'] = $this->em->getRepository(Subcategory::class)->findByCategory('1');
+			$submenu['2'] = $this->em->getRepository(Subcategory::class)->findByCategory('2');
+			return $submenu;
+			
+			
 		}
 	}
