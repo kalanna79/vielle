@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new Vielle\CatalogBundle\VielleCatalogBundle(),
 			new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
+			new Liip\ImagineBundle\LiipImagineBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

@@ -2,6 +2,8 @@
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/vendor/captcha-com/captcha" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/captcha-com/symfony-captcha-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/annotations" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/cache" />
@@ -17,8 +19,10 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/fig/link-util" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/gregwar/captcha" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/gregwar/captcha-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/imagine/imagine" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/incenteev/composer-parameter-handler" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/jdorn/sql-formatter" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/liip/imagine-bundle" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/monolog/monolog" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/paragonie/random_compat" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/cache" />
@@ -70,6 +74,8 @@
     <orderEntry type="module-library">
       <library name="PHP" type="php">
         <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/captcha-com/captcha" />
+          <root url="file://$MODULE_DIR$/vendor/captcha-com/symfony-captcha-bundle" />
           <root url="file://$MODULE_DIR$/vendor/composer" />
           <root url="file://$MODULE_DIR$/vendor/doctrine/annotations" />
           <root url="file://$MODULE_DIR$/vendor/doctrine/cache" />
@@ -85,8 +91,10 @@
           <root url="file://$MODULE_DIR$/vendor/fig/link-util" />
           <root url="file://$MODULE_DIR$/vendor/gregwar/captcha" />
           <root url="file://$MODULE_DIR$/vendor/gregwar/captcha-bundle" />
+          <root url="file://$MODULE_DIR$/vendor/imagine/imagine" />
           <root url="file://$MODULE_DIR$/vendor/incenteev/composer-parameter-handler" />
           <root url="file://$MODULE_DIR$/vendor/jdorn/sql-formatter" />
+          <root url="file://$MODULE_DIR$/vendor/liip/imagine-bundle" />
           <root url="file://$MODULE_DIR$/vendor/monolog/monolog" />
           <root url="file://$MODULE_DIR$/vendor/paragonie/random_compat" />
           <root url="file://$MODULE_DIR$/vendor/psr/cache" />
@@ -112,6 +120,8 @@
           <root url="file://$MODULE_DIR$/vendor/twig/twig" />
         </CLASSES>
         <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/captcha-com/captcha" />
+          <root url="file://$MODULE_DIR$/vendor/captcha-com/symfony-captcha-bundle" />
           <root url="file://$MODULE_DIR$/vendor/composer" />
           <root url="file://$MODULE_DIR$/vendor/doctrine/annotations" />
           <root url="file://$MODULE_DIR$/vendor/doctrine/cache" />
@@ -127,8 +137,10 @@
           <root url="file://$MODULE_DIR$/vendor/fig/link-util" />
           <root url="file://$MODULE_DIR$/vendor/gregwar/captcha" />
           <root url="file://$MODULE_DIR$/vendor/gregwar/captcha-bundle" />
+          <root url="file://$MODULE_DIR$/vendor/imagine/imagine" />
           <root url="file://$MODULE_DIR$/vendor/incenteev/composer-parameter-handler" />
           <root url="file://$MODULE_DIR$/vendor/jdorn/sql-formatter" />
+          <root url="file://$MODULE_DIR$/vendor/liip/imagine-bundle" />
           <root url="file://$MODULE_DIR$/vendor/monolog/monolog" />
           <root url="file://$MODULE_DIR$/vendor/paragonie/random_compat" />
           <root url="file://$MODULE_DIR$/vendor/psr/cache" />
