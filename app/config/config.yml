@@ -80,5 +80,44 @@ gregwar_captcha:
     as_url: true
     keep_value: true
 
+liip_imagine:
+    loaders:
+        default:
+          filesystem:
+            data_root: "assets/images/products/"
+    resolvers:
+        default:
+          web_path: ~
+    filter_sets:
+        cache: ~
+        xs_thumb:
+            quality: 75
+            filters:
+                thumbnail: { size: [50, 75], mode: inset }
+        sm_thumb:
+            quality: 75
+            filters:
+                thumbnail: { size: [95, 150], mode: inset }
+        md_thumb:
+            quality: 75
+            filters:
+                thumbnail: { size: [350, 330], mode: inset }
+        lg_thumb:
+            quality: 100
+            filters:
+                thumbnail: { size: [600, 660], mode: inset }
+        sm_thumb_block:
+            quality: 75
+            filters:
+                thumbnail: { size: [150, 150], mode: inset }
+        md_thumb_block:
+            quality: 75
+            filters:
+                thumbnail: { size: [330, 330], mode: inset }
+        lg_thumb_block:
+            quality: 75
+            filters:
+                thumbnail: { size: [660, 660], mode: inset }
+
 
 
