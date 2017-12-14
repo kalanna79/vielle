@@ -20,9 +20,12 @@
 		public function restaurationAction(Request $request)
 		{
 			$locale = $request->getLocale();
+			$seo = $this->container->get('vielle_catalog.seoservice')->restaurationSeo();
+			
 			
 			$content = $this->get('templating')->render('VielleCatalogBundle:Default:restauration.html.twig', array('_locale'
-																															=>$locale));
+																															=>$locale,
+																													'seopage' => $seo));
 			return new Response($content);
 		}
 	}

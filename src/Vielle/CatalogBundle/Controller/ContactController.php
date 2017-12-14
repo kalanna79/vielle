@@ -18,6 +18,7 @@
 		public function ContactAction(Request $request)
 		{
 			$form = $this->createForm(ContactType::class);
+			$seo = $this->container->get('vielle_catalog.seoservice')->contactSeo();
 			
 			if ($request->isMethod('POST'))
 			{
@@ -36,6 +37,7 @@
 			
 			return $this->render('VielleCatalogBundle:Contact:contact.html.twig', array('form' => $form->createView()
 																						,'_locale'
-																									   =>$locale));
+																									   =>$locale,
+																						'seopage' => $seo));
 		}
 	}

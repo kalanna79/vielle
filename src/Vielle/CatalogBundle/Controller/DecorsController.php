@@ -8,7 +8,6 @@
 	
 	namespace Vielle\CatalogBundle\Controller;
 	
-	
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\HttpFoundation\JsonResponse;
 	use Symfony\Component\HttpFoundation\Request;
@@ -27,48 +26,29 @@
 			$locale = $request->getLocale();
 			
 			$repoDecors = $this->get('vielle_catalog.vielleservice')->recupRepos();
+			$seo = $this->container->get('vielle_catalog.seoservice');
 			
 			
 			$url = $request->getUri();
-			if (stristr($url, 'subcatdecor'))
-			{
+			if (stristr($url, 'subcatdecor')) {
 				$decors = $this->get('vielle_catalog.vielleservice')->showSubCategories($id);
+				$seopage = $seo->subcatdecorSeo($id);
+			} else {
+				$decors = $repoDecors[10];
+				$seopage = $seo->decorSeo();
 			}
-			else { $decors = $repoDecors[10]; }
 			
 			$reponse = $this->render('VielleCatalogBundle:Decors:catalog.html.twig', array(
 				'categories' => $repoDecors[3],
-				'subvielles' =>$repoDecors[2],
-				'subdecors' =>$repoDecors[4],
-				'features' => $repoDecors[5],
-				'counters' => $repoDecors[9],
-				'decors' => $decors,
-				'vielles' =>$repoDecors[2]
+				'subvielles' => $repoDecors[2],
+				'subdecors'  => $repoDecors[4],
+				'features'   => $repoDecors[5],
+				'counters'   => $repoDecors[9],
+				'decors'     => $decors,
+				'vielles'    => $repoDecors[2],
+				'seopage'	 => $seopage
 			));
+			
 			return $reponse;
 		}
-		
-		
-		
-		public function viewAction($id)
-		{
-			dump($id);
-			$em = $this->getDoctrine()->getManager();
-			$repository = $em->getRepository(Product::class);
-			$vielle = $repository->find($id);
-			
-			return $this->render('VielleCatalogBundle:Decors:single.html.twig', array(
-				'vielle' => $vielle
-			));
-		}
 	}
-	/*$repoVielles['1'] = $this->em->getRepository(Category::class)->find("1");
-		$repoVielles['2'] = $this->em->getRepository(Subcategory::class)->findByCategory('1');
-		$repoVielles['3'] = $this->em->getRepository(Category::class)->find("2");
-		$repoVielles['4'] = $this->em->getRepository(Subcategory::class)->findByCategory('2');
-		$repoVielles['5'] = $this->em->getRepository(Feature::class)->findAll();
-		$repoVielles['6'] = $this->counters();
-		$repoVielles['7'] = $this->counterFeatures();
-		$repoVielles['8'] = $this->em->getRepository(Product::class)->findAllVielles();
-		$repoVielles['9'] = $this->countDecors();
-		$repoVielles['10'] = $this->em->getRepository(Product::class)->findAllDecors();*/

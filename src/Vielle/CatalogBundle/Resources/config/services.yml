@@ -25,3 +25,12 @@ services:
                 - "@doctrine.orm.entity_manager"
                 - "@vielle_catalog.uploader"
                 - "@form.factory"
+
+    vielle_catalog.seoservice:
+        class: Vielle\CatalogBundle\Service\SeoService
+        arguments:
+            - "@sonata.seo.page"
+            - "@doctrine.orm.entity_manager"
+            - "@router"
+            - '@request_stack'
+

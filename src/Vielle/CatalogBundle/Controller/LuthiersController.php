@@ -19,9 +19,11 @@
 		public function luthiersAction(Request $request)
 		{
 			$locale = $request->getLocale();
+			$seo = $this->container->get('vielle_catalog.seoservice')->luthierSeo();
 			
 			$content = $this->get('templating')->render('VielleCatalogBundle:Default:luthiers.html.twig', array('_locale'
-																															=>$locale));
+																															=>$locale,
+																												'seopage' => $seo));
 			return new Response($content);
 			
 		}

@@ -1,17 +1,9 @@
-<!--A Design inspired by W3layouts
-Modified by Natacha NOEL
-Author: W3layout
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
 <!DOCTYPE HTML>
-<html>
-<head>
-    <title>{% block title %}Boudet Luthiers Père et Fils - Vielles à roue{% endblock %}</title>
+<html {{ sonata_seo_html_attributes() }}>
+<head {{ sonata_seo_head_attributes() }}>
+    {{ sonata_seo_title() }}
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Vielle à roue, Boudet, musique médiévale" />
+    {{ sonata_seo_metadatas() }}
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <link href="{{ asset('assets/css/bootstrap.css') }}" rel='stylesheet' type='text/css' />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -92,4 +84,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 </body>
 </html>
+<!--A Design inspired by W3layouts
+Modified by Natacha NOEL
+-->
 
