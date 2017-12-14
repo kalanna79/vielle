@@ -119,5 +119,39 @@ liip_imagine:
             filters:
                 thumbnail: { size: [660, 660], mode: inset }
 
+sonata_seo:
+    encoding:         UTF-8
+    page:
+        title:            Luthiers Boudet Père et Fils
+        default:          sonata.seo.page.default
+        metas:
+            name:
+                keywords:             Vielle à roue, Hurdy gurdy, Jenzat, Boudet, musique occitane, facteur de
+                                                       vielles, luthier
+                description:          Les luthiers Boudet créent la vielle de vos rêves
+                robots:               index, follow
+
+            property:
+                # Facebook application settings
+                #'fb:app_id':          XXXXXX
+                #'fb:admins':          admin1, admin2
+
+                # Open Graph information
+                # see http://developers.facebook.com/docs/opengraphprotocol/#types or http://ogp.me/
+                'og:site_name':       Luthiers Boudet Père et Fils
+                'og:description':     Les luthiers Boudet créent la vielle de vos rêves
+                'og:type':            website
+
+            http-equiv:
+                'Content-Type':         text/html; charset=utf-8
+                #'X-Ua-Compatible':      IE=EmulateIE7
+
+            charset:
+                UTF-8:    ''
+
+        head:
+            'xmlns':              http://www.w3.org/1999/xhtml
+            'xmlns:og':           http://opengraphprotocol.org/schema/
+            #'xmlns:fb':           "http://www.facebook.com/2008/fbml"
 
 

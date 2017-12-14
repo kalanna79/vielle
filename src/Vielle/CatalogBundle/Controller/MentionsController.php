@@ -15,14 +15,16 @@
 	
 	class MentionsController extends Controller
 	{
-		public function mentionsAction()
+		public function mentionsAction(Request $request)
 		{
 			
 			$locale = $request->getLocale();
+			$seo = $this->container->get('vielle_catalog.seoservice')->mentionSeo();
 			
 			
 			$content = $this->get('templating')->render('VielleCatalogBundle:Default:mentions.html.twig', array('_locale'
-																																   =>$locale));
+																																   =>$locale,
+																												'seopage' => $seo));
 			return new Response($content);
 		}
 	}
