@@ -11,6 +11,8 @@
 	
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\HttpFoundation\Request;
+	use Vielle\CatalogBundle\Entity\Product;
+	use Vielle\CatalogBundle\Entity\Subcategory;
 	
 	class ViellesController extends Controller
 	{
@@ -31,7 +33,7 @@
 			if (stristr($url, 'subcatvielles'))
 			{
 				$vielles = $this->get('vielle_catalog.vielleservice')->showSubCategories($id);
-				$seopage = $seo->subcatviellesSeo($id);
+				$seopage = $seo->subcatvielleSeo($id);
 			}
 			elseif (stristr($url, 'chant'))
 			{

@@ -22,7 +22,7 @@
 		private $em;
 		private $router;
 		
-		public function __construct(SeoPage $seo, EntityManager $em,Router $router)
+		public function __construct(SeoPage $seo, EntityManager $em, Router $router)
 		{
 			$this->seo = $seo;
 			$this->em = $em;
@@ -164,7 +164,7 @@
 		
 		public function subcatdecorSeo($id)
 		{
-			$subcat = $this->em->getRepository(Feature::class)->find($id);
+			$subcat = $this->em->getRepository(Subcategory::class)->find($id);
 			
 			$seoPage = $this->seo;
 			

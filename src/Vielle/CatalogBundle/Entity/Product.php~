@@ -3,7 +3,6 @@
 namespace Vielle\CatalogBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Product
@@ -13,12 +12,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Product
 {
-	/**
-	 * @ORM\ManyToOne(targetEntity="Vielle\CatalogBundle\Entity\Subcategory")
-	 * @ORM\JoinColumn(nullable=false)
-	 */
-	private $subcategory;
-	
     /**
      * @var int
      *
@@ -38,7 +31,7 @@ class Product
     /**
      * @var string
      *
-     * @ORM\Column(name="description", type="text")
+     * @ORM\Column(name="description", type="string", length=255)
      */
     private $description;
 
@@ -48,19 +41,26 @@ class Product
      * @ORM\Column(name="metatag", type="string", length=255)
      */
     private $metatag;
-
-    /**
-     *
-     * @ORM\Column(name="photo")
-	 * @ORM\OneToOne(targetEntity="AppBundle\Entity\Image", cascade={"persist", "remove"})
-     */
-    private $photo;
+	
+	/**
+	 * @ORM\OneToOne(targetEntity="Vielle\CatalogBundle\Entity\Photo", cascade={"persist", "remove"})
+	 * @ORM\JoinColumn(nullable=false)
+	 */
+	private $photo;
 	
 	/**
 	 * @ORM\ManyToOne(targetEntity="Vielle\CatalogBundle\Entity\Feature")
 	 * @ORM\JoinColumn(nullable=false)
 	 */
 	private $feature;
+	
+	/**
+	 * @ORM\ManyToOne(targetEntity="Vielle\CatalogBundle\Entity\Subcategory")
+	 * @ORM\JoinColumn(nullable=false)
+	 */
+	private $subcategory;
+
+
     /**
      * Get id
      *
@@ -142,76 +142,5 @@ class Product
     {
         return $this->metatag;
     }
-
-    /**
-     * Set photo
-     *
-     * @param mixed $photo
-     *
-     * @return Product
-     */
-    public function setPhoto($photo)
-    {
-        $this->photo = $photo;
-
-        return $this;
-    }
-
-    /**
-     * Get photo
-     *
-     * @return mixed
-     */
-    public function getPhoto()
-    {
-        return $this->photo;
-    }
-
-    /**
-     * Set subcategory
-     *
-     * @param \Vielle\CatalogBundle\Entity\Subcategory $subcategory
-     *
-     * @return Product
-     */
-    public function setSubcategory(\Vielle\CatalogBundle\Entity\Subcategory $subcategory)
-    {
-        $this->subcategory = $subcategory;
-
-        return $this;
-    }
-
-    /**
-     * Get subcategory
-     *
-     * @return \Vielle\CatalogBundle\Entity\Subcategory
-     */
-    public function getSubcategory()
-    {
-        return $this->subcategory;
-    }
-
-    /**
-     * Set feature
-     *
-     * @param \Vielle\CatalogBundle\Entity\Feature $feature
-     *
-     * @return Product
-     */
-    public function setFeature(\Vielle\CatalogBundle\Entity\Feature $feature)
-    {
-        $this->feature = $feature;
-
-        return $this;
-    }
-
-    /**
-     * Get feature
-     *
-     * @return \Vielle\CatalogBundle\Entity\Feature
-     */
-    public function getFeature()
-    {
-        return $this->feature;
-    }
 }
+

@@ -35,7 +35,7 @@
 				$seopage = $seo->subcatdecorSeo($id);
 			} else {
 				$decors = $repoDecors[10];
-				$seopage = $seo->decorSeo();
+				$seopage = $seo->decorsSeo();
 			}
 			
 			$reponse = $this->render('VielleCatalogBundle:Decors:catalog.html.twig', array(

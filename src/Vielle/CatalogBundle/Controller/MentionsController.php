@@ -19,7 +19,7 @@
 		{
 			
 			$locale = $request->getLocale();
-			$seo = $this->container->get('vielle_catalog.seoservice')->mentionSeo();
+			$seo = $this->container->get('vielle_catalog.seoservice')->mentionsSeo();
 			
 			
 			$content = $this->get('templating')->render('VielleCatalogBundle:Default:mentions.html.twig', array('_locale'

@@ -25,6 +25,7 @@ services:
                 - "@doctrine.orm.entity_manager"
                 - "@vielle_catalog.uploader"
                 - "@form.factory"
+                - "@service_container"
 
     vielle_catalog.seoservice:
         class: Vielle\CatalogBundle\Service\SeoService

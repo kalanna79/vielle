@@ -61,9 +61,9 @@ vielle_catalog_adddecor:
 
 
 vielle_catalog_edit:
-    path:      /edit/{id}
+    path:      /editvielle/{id}
     defaults:
-        _controller: VielleCatalogBundle:Fiche:edit
+        _controller: VielleCatalogBundle:AdminEditProduct:editvielle
     requirements:
         id: \d+
 

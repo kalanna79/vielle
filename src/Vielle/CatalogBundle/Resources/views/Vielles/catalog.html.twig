@@ -65,7 +65,9 @@
                             </div>
                             <div class="modal-body">
                                 <div class="item">
-                                    <img src="{{ vielle.photo | imagine_filter('lg_thumb') }}" alt="{{ vielle.name }}" width="100%" style="margin-right: auto; margin-left: auto">
+                                    <img src="{{ vielle.photo.file | imagine_filter('lg_thumb') }}" alt="{{ vielle
+                                    .photo.alt
+                                    }}" width="100%" style="margin-right: auto; margin-left: auto">
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -115,8 +117,8 @@ Possibilité d’amplification grâce à un micro piezzo général ou plusieurs 
                                         <div class="inner_content clearfix">
                                             <div class="product_image">
                                                 <div class="mask1">
-                                                    <img src="{{ vielle.photo | imagine_filter('md_thumb') }}"
-                                                         alt="{{ vielle.name }}" class="img-responsive
+                                                    <img src="{{ vielle.photo.file | imagine_filter('md_thumb') }}"
+                                                         alt="{{ vielle.photo.alt }}" class="img-responsive
                                                     zoom-img"></div>
                                                 <div class="mask">
                                                     <div class="info" >Voir</div>

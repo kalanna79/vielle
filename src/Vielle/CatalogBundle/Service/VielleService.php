@@ -9,25 +9,32 @@
 	namespace Vielle\CatalogBundle\Service;
 	
 	use Doctrine\ORM\EntityManagerInterface;
+	use Symfony\Component\DependencyInjection\Container;
 	use Symfony\Component\HttpFoundation\Request;
+	use Vielle\CatalogBundle\Entity\Photo;
 	use Vielle\CatalogBundle\Entity\Product;
 	use Vielle\CatalogBundle\Entity\Feature;
 	use Vielle\CatalogBundle\Entity\Category;
 	use Vielle\CatalogBundle\Entity\Subcategory;
 	use Vielle\CatalogBundle\Form\ProductType;
+	use Vielle\CatalogBundle\Form\EditProductType;
 	use Symfony\Component\Form\FormFactory;
+	use Symfony\Component\HttpFoundation\File\File;
 	
 	class VielleService
 	{
 		private $em;
 		private $form;
 		private $uploader;
+		private $container;
 		
-		public function __construct(EntityManagerInterface $em, Uploader $uploader, FormFactory $form)
+		public function __construct(EntityManagerInterface $em, Uploader $uploader, FormFactory $form, Container
+		$container)
 		{
 			$this->em = $em;
 			$this->uploader = $uploader;
 			$this->form = $form;
+			$this->container = $container;
 		}
 		
 		public function addVielle(Request $request)
@@ -40,11 +47,34 @@
 					$form->getData();
 					$file = $form['photo']->getData()->getFile();
 					$fileName = $this->uploader->upload($file);
-					$product->setPhoto($fileName);
+					$product->getPhoto()->setFile($fileName);
 					
 					$this->em->persist($product);
 					$this->em->flush();
 				}
+			
+			return $form;
+		}
+		
+		public function editVielle(Request $request, $id)
+		{
+			$product = $this->em->getRepository(Product::class)->find($id);
+			
+			$form = $this->form->create(EditProductType::class, $product);
+			$form->handleRequest($request);
+			
+			if ($form->isSubmitted() && $form->isValid()) {
+				$form->getData();
+				if($form['photo']->getData() != null){
+					$file = $form['photo']->getData()->getFile();
+					$fileName = $this->fileuploader->upload($file);
+					$product->getImage()->setAlt($fileName);
+				}
+				
+				
+				$this->em->persist($product);
+				$this->em->flush();
+			}
 			
 			return $form;
 		}
