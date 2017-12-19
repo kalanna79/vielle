@@ -11,11 +11,13 @@
 	
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\HttpFoundation\Request;
-	use Vielle\CatalogBundle\Entity\Product;
-	
+	use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 	
 	class AdminEditProductController extends Controller
 	{
+		/**
+		 * @Security("has_role('ROLE_ADMIN')")
+		 */
 		public function editVielleAction(Request $request, $id)
 		{
 			

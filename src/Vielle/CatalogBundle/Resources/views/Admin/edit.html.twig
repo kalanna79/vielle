@@ -18,9 +18,9 @@
                 
         </div>
         <div class="but__center">
-                {{ form_widget(form.ajouter) }}
+            <a href="{{ path('admin_index') }}" class="btn btn-primary btn-normal btn-inline btn_form button item_add item_1">Retour à l'administration</a>  {{ form_widget(form.ajouter) }}
                     {{ form_rest(form) }}
-
+            <br>
         </div>
     </div>
         <div class="clearfix"></div>

@@ -11,9 +11,13 @@
 	
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\HttpFoundation\Session\Session;
+	use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 	
 	class AdminDeleteProductController extends Controller
 	{
+		/**
+		 * @Security("has_role('ROLE_ADMIN')")
+		 */
 		public function deleteItemAction($id)
 		{
 			$session = new Session();

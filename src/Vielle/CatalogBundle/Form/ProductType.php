@@ -72,7 +72,9 @@
 					'label' => 'Metatag',
 					'required' => false,
 				))
-			->add('ajouter', SubmitType::class);
+			->add('ajouter', SubmitType::class, array(
+					'attr'=> array('class'=> 'btn btn-primary btn-normal btn-inline btn_form button item_add item_1')
+					));
 		}
 		
 		public function configureOptions(OptionsResolver $resolver)

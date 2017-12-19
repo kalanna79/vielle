@@ -28,6 +28,7 @@ chant:
     requirements:
         feature: \d+
 
+
 decors:
     path:      /decors
     defaults:
@@ -49,7 +50,7 @@ singledecor:
         id: \d+
 
 admin_index:
-    path:   /admin/index
+    path:   /admin/
     defaults:
         _controller: VielleCatalogBundle:AdminIndex:index
 

@@ -33,7 +33,7 @@
 			if (stristr($url, 'subcatvielles'))
 			{
 				$vielles = $this->get('vielle_catalog.vielleservice')->showSubCategories($id);
-				$seopage = $seo->subcatvielleSeo($id);
+				$seopage = $seo->subcatviellesSeo($id);
 			}
 			elseif (stristr($url, 'chant'))
 			{
