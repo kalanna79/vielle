@@ -11,7 +11,6 @@
 	use Doctrine\ORM\EntityManagerInterface;
 	use Symfony\Component\DependencyInjection\Container;
 	use Symfony\Component\HttpFoundation\Request;
-	use Vielle\CatalogBundle\Entity\Photo;
 	use Vielle\CatalogBundle\Entity\Product;
 	use Vielle\CatalogBundle\Entity\Feature;
 	use Vielle\CatalogBundle\Entity\Category;
@@ -19,7 +18,6 @@
 	use Vielle\CatalogBundle\Form\ProductType;
 	use Vielle\CatalogBundle\Form\EditProductType;
 	use Symfony\Component\Form\FormFactory;
-	use Symfony\Component\HttpFoundation\File\File;
 	
 	class VielleService
 	{
@@ -60,6 +58,12 @@
 		{
 			$product = $this->em->getRepository(Product::class)->find($id);
 			
+			if (!$product) {
+				throw $this->createNotFoundException(
+					'No product found for id '.$id
+				);
+			}
+			
 			$form = $this->form->create(EditProductType::class, $product);
 			$form->handleRequest($request);
 			
@@ -67,16 +71,20 @@
 				$form->getData();
 				if($form['photo']->getData() != null){
 					$file = $form['photo']->getData()->getFile();
-					$fileName = $this->fileuploader->upload($file);
-					$product->getImage()->setAlt($fileName);
+					$fileName = $this->uploader->upload($file);
+					$product->getPhoto()->setFile($fileName);
 				}
-				
-				
-				$this->em->persist($product);
 				$this->em->flush();
 			}
 			
 			return $form;
+		}
+		
+		public function deleteVielle($id)
+		{
+			$product = $this->em->getRepository(Product::class)->find($id);
+			$this->em->remove($product);
+			$this->em->flush();
 		}
 		
 		public function showFeatures($id)
@@ -139,7 +147,7 @@
 			$submenu['1'] = $this->em->getRepository(Subcategory::class)->findByCategory('1');
 			$submenu['2'] = $this->em->getRepository(Subcategory::class)->findByCategory('2');
 			return $submenu;
-			
-			
 		}
+		
+		
 	}

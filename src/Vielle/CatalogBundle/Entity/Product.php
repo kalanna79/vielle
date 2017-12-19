@@ -50,7 +50,7 @@ class Product
 	
 	/**
 	 * @ORM\ManyToOne(targetEntity="Vielle\CatalogBundle\Entity\Feature")
-	 * @ORM\JoinColumn(nullable=false)
+	 * #@ORM\JoinColumn(nullable=false)
 	 */
 	private $feature;
 	

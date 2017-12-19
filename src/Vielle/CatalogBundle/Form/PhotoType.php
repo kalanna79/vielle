@@ -21,6 +21,7 @@ class PhotoType extends AbstractType
 					'label' => 'description de l\'image'))
 			->add('file', FileType::class, array(
 				'label' => false,
+				'data_class' => null,
 				'attr' => array(
 					'accept' => 'image/*',
 					'capture' =>'',

@@ -48,20 +48,24 @@ singledecor:
     requirements:
         id: \d+
 
+admin_index:
+    path:   /admin/index
+    defaults:
+        _controller: VielleCatalogBundle:AdminIndex:index
 
 vielle_catalog_addvielle:
-    path:      /addvielle
+    path:      /admin/addvielle
     defaults:
         _controller: VielleCatalogBundle:AdminAddProduct:addvielle
 
 vielle_catalog_adddecor:
-    path:      /adddecor
+    path:      /admin/adddecor
     defaults:
         _controller: VielleCatalogBundle:AdminAddProduct:adddecor
 
 
 vielle_catalog_edit:
-    path:      /editvielle/{id}
+    path:      /admin/editvielle/{id}
     defaults:
         _controller: VielleCatalogBundle:AdminEditProduct:editvielle
     requirements:
@@ -69,9 +73,9 @@ vielle_catalog_edit:
 
 
 vielle_catalog_delete:
-    path:      /delete/{id}
+    path:      /admin/delete/{id}
     defaults:
-        _controller: VielleCatalogBundle:Fiche:delete
+        _controller: VielleCatalogBundle:AdminDeleteProduct:deleteitem
     requirements:
         id: \d+
 
