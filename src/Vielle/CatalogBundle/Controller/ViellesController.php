@@ -11,8 +11,7 @@
 	
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\HttpFoundation\Request;
-	use Vielle\CatalogBundle\Entity\Product;
-	use Vielle\CatalogBundle\Entity\Subcategory;
+	
 	
 	class ViellesController extends Controller
 	{

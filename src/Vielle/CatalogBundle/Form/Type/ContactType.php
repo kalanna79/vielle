@@ -1,6 +1,6 @@
 <?php
 
-namespace Vielle\CatalogBundle\Form;
+namespace Vielle\CatalogBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;

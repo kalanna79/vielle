@@ -11,12 +11,13 @@
 	use Doctrine\ORM\EntityManagerInterface;
 	use Symfony\Component\DependencyInjection\Container;
 	use Symfony\Component\HttpFoundation\Request;
+	use Vielle\CatalogBundle\Entity\Photo;
 	use Vielle\CatalogBundle\Entity\Product;
 	use Vielle\CatalogBundle\Entity\Feature;
 	use Vielle\CatalogBundle\Entity\Category;
 	use Vielle\CatalogBundle\Entity\Subcategory;
-	use Vielle\CatalogBundle\Form\ProductType;
-	use Vielle\CatalogBundle\Form\EditProductType;
+	use Vielle\CatalogBundle\Form\Type\ProductType;
+	use Vielle\CatalogBundle\Form\Type\EditProductType;
 	use Symfony\Component\Form\FormFactory;
 	
 	class VielleService
@@ -83,7 +84,9 @@
 		public function deleteVielle($id)
 		{
 			$product = $this->em->getRepository(Product::class)->find($id);
+			$photo = $product->getPhoto();
 			$this->em->remove($product);
+			$this->em->remove($photo);
 			$this->em->flush();
 		}
 		

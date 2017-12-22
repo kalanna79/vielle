@@ -10,8 +10,7 @@
 	
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 	use Symfony\Component\HttpFoundation\Request;
-	use Vielle\CatalogBundle\Form\ContactType;
-	use Vielle\CatalogBundle\Entity\Subcategory;
+	use Vielle\CatalogBundle\Form\Type\ContactType;
 	
 	class ContactController extends Controller
 	{

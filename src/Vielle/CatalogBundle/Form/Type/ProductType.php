@@ -6,12 +6,11 @@
 	 * Time: 11:13
 	 */
 	
-	namespace Vielle\CatalogBundle\Form;
+	namespace Vielle\CatalogBundle\Form\Type;
 	
 	
 	use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 	use Symfony\Component\Form\AbstractType;
-	use Symfony\Component\Form\Extension\Core\Type\FileType;
 	use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 	use Symfony\Component\Form\Extension\Core\Type\TextType;
 	use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -20,7 +19,6 @@
 
 	use Symfony\Component\Validator\Constraints\NotBlank;
 	use Symfony\Component\Validator\Constraints\NotNull;
-	use Vielle\CatalogBundle\Repository\FeatureRepository;
 	
 	class ProductType extends AbstractType
 	{

@@ -9,13 +9,8 @@
 	namespace Vielle\CatalogBundle\Controller;
 	
 	use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-	use Symfony\Component\HttpFoundation\JsonResponse;
 	use Symfony\Component\HttpFoundation\Request;
-	use Symfony\Component\HttpFoundation\Response;
-	use Vielle\CatalogBundle\Entity\Category;
-	use Vielle\CatalogBundle\Entity\Product;
-	use Vielle\CatalogBundle\Entity\Subcategory;
-	use Vielle\CatalogBundle\VielleCatalogBundle;
+	
 	
 	class DecorsController extends Controller
 	{
