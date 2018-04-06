@@ -24,7 +24,7 @@
 				$form->handleRequest($request);
 				if ($form->isSubmitted() && $form->isValid()) {
 					$contact = $form->getData();
-					$this->get('vielle_catalog.message')->sendMessage($contact);
+					$this->container->get('vielle_catalog.message')->sendMessage($contact);
 					$this->addFlash('success', 'Votre message a bien été envoyé');
 					return $this->redirectToRoute('index');
 				} else {

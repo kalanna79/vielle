@@ -5,10 +5,14 @@
     <div class="men">
         <div class="container">
         <h1>Administration</h1>
-            <div>
+            <div class="col-md-push-2 col-md-8">
                 <a href="{{ path('vielle_catalog_addvielle') }}" class="btn btn-primary btn-normal btn-inline btn_form button item_add item_1">Ajouter une vielle</a>
                 <a href="{{ path('vielle_catalog_adddecor') }}" class="btn btn-primary btn-normal btn-inline btn_form button item_add item_1">Ajouter un décor</a>
             </div>
+            <div class="col-md-push-2 col-md-1">
+                <a href="{{ path('logout') }}" class="btn btn-primary btn-normal btn-inline btn_form button item_add item_1">Déconnexion</a>
+            </div>
+            <div class="clearfix"></div>
             <div class="sap_tabs">
                 <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
                     <ul class="resp-tabs-list">

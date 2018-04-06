@@ -16,13 +16,24 @@ security:
             security: false
 
         main:
-            anonymous: ~
+            pattern: ^/
+            anonymous: true
             # activate different ways to authenticate
+            form_login:
+                login_path: login
+                check_path: login_check
+                default_target_path: /admin
+                csrf_token_generator: security.csrf.token_manager
+            logout:
+                path: logout
+                target: login
 
+        main_admin:
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
             pattern:    ^/admin
             http_basic: ~
             provider: our_db_provider
+
 
             # https://symfony.com/doc/current/security/form_login_setup.html
             #form_login: ~

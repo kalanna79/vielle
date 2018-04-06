@@ -49,6 +49,18 @@ singledecor:
     requirements:
         id: \d+
 
+login:
+    path:     /login
+    defaults:
+        _controller: VielleCatalogBundle:Security:login
+
+login_check:
+    path: /login_check
+
+
+logout:
+    path: /logout
+
 admin_index:
     path:   /admin/
     defaults:
