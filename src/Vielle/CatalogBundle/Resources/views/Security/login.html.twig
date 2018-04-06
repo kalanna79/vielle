@@ -1,36 +1,32 @@
 {% extends "base.html.twig" %}
 {% block menu %} {{ render(controller('VielleCatalogBundle:Menu:menu', {})) }}{% endblock %}
 {% block body %}
-<div class="men">
-    <div class="container">
-        <div class="contact_form">
-            <h2>Se connecter</h2>
- {% if error %}
-     <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
- {% endif %}
-<form action="{{ path('login_check') }}" method="post">
-    <div class="col-md-push-3 col-md-2">
+ 
+        <div class="account-in">
+            <div class="container">
+                <h2>Se connecter</h2>
     
-    <label for="username">Pseudo :</label>
-    <input type="text" id="username" name="_username" value="{% if last_username is defined %} {{ last_username }} {% endif %}" />
-    </div>
-    <div class="col-md-push-3 col-md-2">
-        <label for="password">Mot de passe :</label>
-        <input type="password" id="password" name="_password" />
-        <input type="hidden" name="_csrf_token"
-               value="{{ csrf_token('authenticate') }}"
-        >
-    </div>
-    {#
-        If you want to control the URL the user
-        is redirected to on success (more details below)
-        <input type="hidden" name="_target_path" value="/account" />
-    #}<div class="col-md-push-5 col-md-2"><button type="submit">Connexion</button></div>
-    
-</form>
+                {% if error %}
+                    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+                <div class="col-md-7 account-top">
+                    <form action="{{ path('login_check') }}" method="post">
+                        <div>
+                            <span>Pseudo*</span>
+                            <input type="text" id="username" name="_username" value="{% if last_username is defined %} {{ last_username }} {% endif %}" />
+                        </div>
+                        <div>
+                            <span class="pass">Mot de passe*</span>
+                            <input type="password" id="password" name="_password" />
+                            <input type="hidden" name="_csrf_token"
+                                   value="{{ csrf_token('authenticate') }}"
+                            >                        </div>
+                        <button type="submit">Connexion</button>
+                    </form>
+                </div>
+                <div class="clearfix"> </div>
+            </div>
         </div>
-    </div>
-</div>
     
     
     <script src="{{ asset('assets/js/cbpViewModeSwitch.js') }}" type="text/javascript"></script>
