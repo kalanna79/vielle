@@ -25,7 +25,7 @@
 			
 			if ($form->isSubmitted() && $form->isValid())
 			{
-				return $this->redirectToRoute('vielles');
+				return $this->redirectToRoute('admin_index');
 			}
 			return $this->render('VielleCatalogBundle:Admin:add.html.twig', array(
 				'form' => $form->createView()
@@ -38,7 +38,7 @@
 			
 			if ($form->isSubmitted() && $form->isValid())
 			{
-				return $this->redirectToRoute('decors');
+				return $this->redirectToRoute('admin_index');
 			}
 			return $this->render('VielleCatalogBundle:Admin:add.html.twig', array(
 				'form' => $form->createView()

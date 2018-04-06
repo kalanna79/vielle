@@ -85,8 +85,8 @@
 		{
 			$product = $this->em->getRepository(Product::class)->find($id);
 			$photo = $product->getPhoto();
-			$this->em->remove($product);
 			$this->em->remove($photo);
+			$this->em->remove($product);
 			$this->em->flush();
 		}
 		

@@ -38,4 +38,24 @@
 			
 			return $reponse;
 		}
+		
+		public function loginAction()
+		{
+			$repoVielles = $this->get('vielle_catalog.vielleservice')->recupRepos();
+			$seo = $this->container->get('vielle_catalog.seoservice');
+			
+			$reponse = $this->render('VielleCatalogBundle:Security:index.html.twig', array(
+				'categories' => $repoVielles[1],
+				'subvielles' =>$repoVielles[2],
+				'subdecors' =>$repoVielles[4],
+				'features' => $repoVielles[5],
+				'counters' => $repoVielles[6],
+				'countFeature' => $repoVielles[7],
+				'vielles' => $repoVielles[8],
+				'decors' => $repoVielles[3],
+				'seopage' =>$seo,
+			));
+			
+			return $reponse;
+		}
 	}
